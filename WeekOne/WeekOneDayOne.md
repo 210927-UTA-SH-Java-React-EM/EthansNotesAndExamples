@@ -113,3 +113,41 @@ Scrum is the simplest Agile framework, it enforces ceremonies lead by a lead who
 - Epic: a group of related features that is broken down into multiple user stories
 - Spring: a brief period of development, (between 2 and 4 weeks). which generally cumulates in a release of realated features
 - Velocity: the sum of story points of all the user stories completed that week
+
+## Story Pointing
+
+Story pointing allows teams to keep track of the progress (velocity) of their sprint/project, and create burndown charts
+
+Burndown Charts: chart the amount of story points that been completed each day, vs the number of points remaining
+
+![burndown](burndown.PNG)
+
+When assigning story points, it should be a team discussion, that includes consideration of Risk, Complexity, and Repetition of the user story
+
+It is also recommended to use a number fib sequence:
+- 1: "trivial"
+- 2: "easy"
+- 3: "medium"
+- 5: "difficult"
+
+## Scrum Ceremonies:
+meetings used during the life cylce of the sprint in a project
+
+Sprint Planning:
+- Include the entire dev team, scrum master, product owner
+- Happen before every sprint
+- Determine the scope, goals, and metrics of the sprint
+
+Daily Standup/Scrum:
+- This is a daily meeting lead by the scrum master
+- Takes aprox. 15 minutes
+- Everyone tells what they are working on, what they are stuck on, and their goals for the day
+
+Sprint Review:
+- Everyone is invited to this meeting
+- Review what the team accomplished at the end of a sprint
+- Gain feedback
+
+Sprint Retro:
+- Scrum master reviews the metric, and assess any ineffiencies
+- Plan to make improvemtents as a team
