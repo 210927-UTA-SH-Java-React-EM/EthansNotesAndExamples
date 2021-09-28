@@ -51,6 +51,7 @@ public class ClassExample {
 		//Here we can execute whatever logic we like
 		//To create a new object you use the new keyword
 		ClassExample myClass = new ClassExample(5, "Hello World");
+		ClassExample myClass2 = new ClassExample(7, "Hello");
 		
 		//To call upon the method, you need an instance of the class (an object)
 		//Then you use .methodName(), with opening and closing parenthesis
