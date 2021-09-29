@@ -90,3 +90,90 @@ Covariance Return Type:
 Upcasting allows you to assign a child object to a parent object, this works because the child will have all of the behaviors of the parent, however you may be missing some of the childs functionality
 
 Downcasting is the opposite, it allows you to assign a parent object to a child object, however you cannot garentee that the parent object will have all the properties of the child, leading to problems
+
+## Encapsulation
+
+Restricting direct access to data, while providing indirect access to it through separate methods
+
+You achieve encapsulation by making data members private, and creating public getters/setters for them
+
+# SOLID Design Principles
+
+Set of principles that are used in conjuction with OOP
+
+Single Responsibility:
+- A class should only have a single responisibility, only one part of the software should be affected by a single class
+
+Open-Closed Principle:
+- Software entities should be open for extension, but closed for modification. Classes should be able to have their behavior extended without being modified
+
+Listkov Substitution Principle:
+- The objects in a program should be replaceble with instances of their subtypes without altering the correctness of the program
+
+Interface Segretation Principle
+- Many client specific interfaces are better than on general purpose interface
+
+Dependency Inversion Principle:
+- One should depend upon abstraction, not concretion
+- This will be huge in Spring Week
+
+# Object Class
+
+In Java the object class is the root of all classes, all java classes inherit from the object class
+
+Therefore all classes in Java will have these methods defined by the object class:
+
+-   Object clone()
+-   boolean equals(Object o): by default this will perform == on the objects memory location, you can override this to compare other parts of the object
+-   void finalize(): this is called by the garbage collector when it determines there are no more references to the object
+-   Class<?> getClass()
+-   int hashCode(): returns an int indicating the hashcode, this one has a few rules
+    -   If you override equals() you are also expected to override hashCode()
+    -   The result of hashCode() should not change in a program
+    -   if .equals() returns true the hashcode should be the same
+    -   if .equals() returns false, the hashcodes do not have to be distinct
+-   void notify()
+-   void notifyAll()
+-   String toString(): this will be called automatically if you try to print the object, typically you want to override this method otherwise it will print the fully qualified class name
+-   void wait()
+-   void wait(long timeout)
+-   void wait(long timeout, int nanos)
+
+# Wrapper Classes
+
+For every Primitive in Java, there is a wrapper class with the same name but capitalized
+- These allow you to treat primitives as objects
+
+The Wrapper Classes include:
+
+| Primitive | Wrapper Class |
+| --------- | ------------- |
+| boolean   | Boolean       |
+| byte      | Byte          |
+| short     | Short         |
+| char      | Character     |
+| int       | Integer       |
+| long      | Long          |
+| float     | Float         |
+| double    | Double        |
+
+Autoboxing: when you pass a primitive argument into a parameter that asks for its wrapper equivalent, Java will automatically wrap the primitive into its object type
+
+Unboxing: when you pass a wrapper object into a parameter that asks for a primitive, Java will automatically convert the object to a primitive
+
+# Annotations
+
+Annotations are special constructs in Java which use the @ symbol followed by the name of the annotation
+- Annotations provide metadata about the source code to the compiler and JVM
+
+Annotations can be placed over classes, methods, interfaces, and other constructs
+
+Annotations are often used by libraries to abstract funcionality, or enforce some set of rules
+- Annotations are ofect processed by the Reflections API
+
+Some examples include:
+- @Override
+- @Deprecated
+- @SuppressWarnings
+- @FunctionalInterface
+
