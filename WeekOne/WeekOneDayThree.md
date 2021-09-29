@@ -56,3 +56,37 @@ Interfaces are implicitly public and abstract
 - In Java 8 default methods were added, which allows programmers to implement methods inside of interfaces
 
 To inherit from an interface a class must use the `implements` keyword in the class declaration
+
+## Polymorphism
+
+Polymorphism is the ability for an object to take on many forms
+
+The most common ways this is achieved is:
+- Method overloading
+- Method overriding
+- covariance
+- casting
+
+Method Overloading:
+- Two or more methods exist with the same name, but have different method signatures by changing the number of parameters, the types of parameters, or the order in which the parameters are passed
+- The return must stay the same
+- Which method runs is determined at run-time, making it run-time polymorphism
+
+Method Overriding:
+- A method in a child class hase the same name as a method in the parent class, but a different implementation
+- Makes class hierarchy more flexible and dynamic
+- Compile-time polymorphism because of virtual method invocation
+- Virtual Method Invocation will look at the reference objects type and call the method associated with that object
+
+Method Hiding:
+- When a child class implements the same static method as its parent. The parent method is replaced by the child class' method
+
+Covariance Return Type:
+- When overriding a method, you can change the return type as long as it is a subclass of the original return type
+- You can change the access modifer as long as it is not more restrictive
+
+## Casting
+
+Upcasting allows you to assign a child object to a parent object, this works because the child will have all of the behaviors of the parent, however you may be missing some of the childs functionality
+
+Downcasting is the opposite, it allows you to assign a parent object to a child object, however you cannot garentee that the parent object will have all the properties of the child, leading to problems
