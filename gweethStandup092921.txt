@@ -1,0 +1,7 @@
+We established team 2 as GWEETH (an acronym of our names) on September 29th.
+I'm scrum master based on a random number generator.
+
+We established that we'll report to each other our progress, hangups and goals in the order our initial appears in the group name.
+
+Gonzalo is doing very well, done with almost all of the activities.
+The rest of us expressed concerns about having limited GIT experience and trying to get our Java projects to pass their tests.
