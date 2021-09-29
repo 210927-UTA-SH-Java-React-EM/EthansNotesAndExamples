@@ -233,3 +233,218 @@ JUnit also has built in methods to use in your testing methods to verify the sta
 A stub is a fake class that comes with preprogrammed return values
 
 A mock is a fake class that can be examined after the test is finished to see how it interacted with the class under the test
+
+# Exceptions
+
+Are events that occur during the execution of a program that disrupts the normal flow, during these events an Exception object is thrown
+- You can recover from exception if you handle them
+
+## Exception Hierarchy
+
+The root of all exceptions is the Throwable class
+- Any class that extends this Throwable class is able to be "thrown" with the `throw` keyword
+
+The Exception class and Error class that both extend Throwable
+
+RuntimeException that extends Exception
+
+From there, all exception extend either from the Exception or RuntimeException class
+
+![Exceptions hierarchy](https://i.pinimg.com/originals/a6/ab/f3/a6abf35c5fbbb57ebd4e949945839f31.jpg)
+
+## Checked and Unchecked Exceptions
+
+Checked exceptions are caught at compile time, and they are required to be handled by the programmer, otherwise your code will not run
+
+- In the hierarchy these are the classes NOT extending RuntimeException
+
+Examples:
+- FileNotFoundException
+- ClassNotFoundException
+- CloneNotSupportedException
+
+Unchecked Exceptions are caught during run-time, are not required to be handled by the programmer
+- In the hierarchy these are any exceptions that ARE a subclass of RunTimeException
+
+Examples:
+- ArithmeticException
+- IndexOutOfBoundsException
+- NullPointerException
+
+In Java there are also objects called Errors, these occur when something goes carstrophically wrong, and cannot be recovered from
+
+Examples:
+- StackOverflow
+- OutOfMemory
+
+## Exception Handling or Declarations
+
+When you suspect that code may be at risk of throwing exception, it can be handled in two ways
+
+1. You place the code inside of a try/catch block
+2. You can declare the method could throw an exception with the `throws` keyword
+- Declaring it on the method will "duck" the exception, which hands the responisibility of handling the exception to which every entity called the exception
+
+## try/catch/finally blocks:
+
+You want to enclose the code that is suspect to throw an error inside of the try block of code
+
+Inside of the parenthesis of the catch block, you should declare the exception that you are expecting to catch, and whatever logic should run if the exception occurs
+
+The finally block will run regardless of the out of the try block
+
+try/catch rules and multi-catch blocks
+- Multiple catches are aloud, but they must go from most specific to least specific
+- You can catch more than one exception per catch block using ||
+- The finally is optional
+- A try/finally block is legal, but a try block on its own is not
+
+You can cause an exception yourself by using the `throw` keyword
+
+## Custom Exceptions
+
+You can also create your own custom exceptions
+- You can create checked exceptions by extending the Exception class
+- You can create unchecked exceptions by extending the RuntimeException class
+
+Which one you choose depends in whether you want to force the programmer to handle the exception
+
+**Know the different between throws, throw, and throwable**
+
+# Collections API:
+The Collections API is a framework of Java classes and interfaces that implement commonlyu used data structures
+
+## Data structure:
+a data organization, management, and storage format that enables effiecient access and modification
+- Each one prioritizes access and modification in different
+- Typically one is better for specific tasks for others
+
+There are two different types of data structures:
+
+- Linear: arranged in an orderly manner where each element is attached adjacently
+    - Elements can ve access in one time single run
+    - Simplier to implement
+    - single level
+    - Memory inefficient
+- Hierarchical: arranges elements in a sorted order, adn there is a relationship between them
+    - Cannot be accessed in a single run
+    - Complex to implement
+    - Multi-leveled
+    - Memory Efficient
+
+![Collection API class hierarchy](https://javaconceptoftheday.com/wp-content/uploads/2014/11/CollectionHierarchy.png)
+
+**ALMOST** every class in the collections api extends from the Iterable interface
+- Exception is the Map classes
+
+# Iterable Interable and Iterator Interface
+
+## Iterable Interface:
+defines data structures that can be directly traversed using the .iterator() method
+
+## Interator Interface:
+contains methods for traversing linear data structures, these methods include:
+- hasNext()
+- next()
+- remove()
+
+Any class that implements Iterable can also be used with enhanced for-loops
+
+Classes that implement the Iterable interface also have the .forEach() each method, which allows user to iterate through the data structure, and perform some logic with a lamda expression
+
+# Lists
+The most basic datatype, a collection of ordered data that is preserved
+- Duplicate entries are allowed
+- Elements are accessed by their index, which start at 0
+
+ArrayList: a concrete implementation of the List interface that contains an array within it
+- The array is resizable, once it reaches the max capacity it increases its size by 50%
+- You can traverse it quickly via index
+- Insertion and deltion is slower, because it may have to resive the internal array
+
+LinkedList: a concrete implementation of the List and Queue interface which is composed of nodes that reference each other
+- Insertion and deletion is relatively quick
+- Traverse to a specific index is slower
+
+Vector: an older concrete implementation of the List interface, which is a threadsafe arraylist
+- Doubles in size if needed
+
+Stack: an older concrete implementation of the List interface, used to implement the stack data structure, (first in last out), but you should now use ArrayDeque
+
+# Sets
+A collection of data that is not ordered and does not allow duplicate elements
+- does not preserve the order in which elements are inserted
+
+HashSet: a concrete implementation fo the Set interface backed by a HashMap
+- There is no ordering when iterating
+- Allows one null value
+- Allows fast insertion and traveral
+
+TreeSet: a concerete implementation of the Set interface which maintains sorted order when elements are inserted
+- It is backed by a Sorted Tree
+- Insertion and deletion is slow
+- It cannot contain null elements
+
+# Queues
+Collection of data that follows first in first out, unless otherwise specified
+
+ArrayDeque: a concrete implementation of the Queue interface that allows programmers to implement stack or queue behavior
+- It is a double ended queue
+- It stores items in a resizable array
+
+Useful ArrayDeque methods:
+- pop()
+- push()
+- peekFirst()
+- peekLast()
+- pollFirst()
+- pollLast()
+- offerFirst()
+- offerLast()
+
+Priority Queue: a concrete implementation of the Queue interface which orders elements based on their natural ordering
+- It uses a Comparator to order the elements
+
+# Maps
+Data structure that uses key/value pairs to store and retrieve data
+
+The Map interface does not implement the Collection Interface, however it is still considered to be part of the Collections API
+
+Youn cannot iterate over a Map, because it does not implement the iterable interface, you can iterate through different values in a Map:
+- use the entrySet() method to iterate over the set of Map.entry
+- use keySet() method to iterate over the set of keys
+- use values() method to return a Collection of values which then can be iterated over
+
+HashMap: a concrete implementation of the Maps interface that:
+- Stores elements in a key/value pair
+- Insertion and retreival is fast
+- Tradeoff is that it does not maintain insetion order
+- Permits on null key and null values
+
+TreeMap: a concrete implementation of the Maps interface that:
+- Stores its keys in a sorted tree structure
+- Insertion and retrieval is slow
+- Cannot contain null keys
+
+HashTable: older concrete implementation of the Maps interface that is threadsage, and cannot contain null keys or values
+
+# Comparable and Comparator Interfaces
+
+## Comparable:
+an interface which defines the natual ordering for a class
+- The class must implement the Comparabl interface and implement the compareTo() method
+
+The compareTo() method should return:
+- Zero id the two object are equal
+- Less than zero if "this" object is smaller than the one in the parameter list
+- Greater than zero is "this" object is larger than the one in the parameter list
+
+## Comparator
+an interface that allows you to define a total ordering on some collection of objects
+- You can implement the Comparator interface, but are not required to implement the .compare() method
+
+# collections vs Collection vs Collections
+
+- collections are just a collection of entities
+- Collection: is an interface within the Collection API
+- Collections: is a utility class that has static, conveient methods that operate on data structures in the Collections API
