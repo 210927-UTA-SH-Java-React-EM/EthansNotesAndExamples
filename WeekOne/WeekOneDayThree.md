@@ -70,12 +70,12 @@ The most common ways this is achieved is:
 Method Overloading:
 - Two or more methods exist with the same name, but have different method signatures by changing the number of parameters, the types of parameters, or the order in which the parameters are passed
 - The return must stay the same
-- Which method runs is determined at run-time, making it run-time polymorphism
+- Because the argument list is known at compilation, the compiler knows which version of the method will be executed. Therefore, method overloading is a type of compile-time - or static - polymorphism
 
 Method Overriding:
 - A method in a child class hase the same name as a method in the parent class, but a different implementation
 - Makes class hierarchy more flexible and dynamic
-- Compile-time polymorphism because of virtual method invocation
+- Run-time polymorphism because of virtual method invocation
 - Virtual Method Invocation will look at the reference objects type and call the method associated with that object
 
 Method Hiding:
