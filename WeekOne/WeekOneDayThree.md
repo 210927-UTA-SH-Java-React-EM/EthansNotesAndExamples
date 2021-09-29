@@ -177,3 +177,59 @@ Some examples include:
 - @SuppressWarnings
 - @FunctionalInterface
 
+# Intro to TDD and Unit Testing
+
+Test Driven Development (TDD) is a the process of writing tests for your code, then implementing the code to pass those tests
+
+- This helps increase code coverage
+
+The process can be broken down into 5 steps
+
+1. Write a unit test
+2. Run the test (it will fail)
+3. Write code to pass the test
+4. Retest, until the test passes
+5. Repeat the process
+
+Unit Testing: is the testing of individual software components in isolation from the rest of the software
+
+It cal also be known as White Box testing:
+- a testing method in which the internal design of the item being tested is known to the tester
+
+Unit testing can find if/where something goes wrong in your code
+
+- This helps reduce debugging time because you know where to look for the issue in the code
+- It also increases code coverage, because you should be testing each individual unit/module of code
+- It increases confidence in changinf and maintaining your code base
+
+It is best practice to include both positive and negative test cases
+
+# JUnit and Mockito
+
+## JUnit: is a Java framework for unit testing
+
+It uses annotations to create tests and setup testing enviornments
+
+-   `@Test` - declares a method as a test method
+-   `@BeforeClass` - declares a setup method that runs once, before all other methods in the class
+-   `@Before` - declares a setup method that runs before each test method
+-   `@After` - declares a tear-down method that runs before each test method
+-   `@AfterClass` - declares a tear-down method that runs once, after all other methods in the class
+
+JUnit also has built in methods to use in your testing methods to verify the state of the application is what is expected:
+- `assertTrue()`
+- `assertFalse()`
+- `assertEquals()`
+- `assertNotEquals()`
+- `assertThat()`
+
+## Mockito: is Java framework that allows us to mock the functionality of other methods
+
+- This allows for black box testing:
+    - Where you don't know the functionality of a given item, we just need the output
+- This is extremely useful for testing methods that rely on the output of other methods
+- You replace the depedency of the other method with mocks and stubs
+
+A stub is a fake class that comes with preprogrammed return values
+
+A mock is a fake class that can be examined after the test is finished to see how it interacted with the class under the test
