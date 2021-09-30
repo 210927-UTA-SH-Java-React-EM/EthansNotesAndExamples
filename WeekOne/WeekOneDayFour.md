@@ -164,3 +164,123 @@ The scanner class can be usedf to read user input from the command line
 Java 7 implemented a new use for the try catch block, try with resources allows you to add a resource in the try block, and Java will automatically close the resource for you when you are finished using it
 
 The only catch is that the object in the try parenthesis must implement the AutoCloseable interface
+
+# Java 8 Features
+
+Java 8 implemented many new and useful features including:
+
+- Functional Interfaces
+- Lamda Expressions
+- Stream API
+- Reflections API
+- Date and Time API
+- Optional Classses
+- Predicates
+
+# Functional Interfaces
+
+Functional interfaces are interfaces with only one abstract method
+- Implicitly created by lamdas
+- Can explicitly be created for use by lambdas
+
+# Lambdas
+possibly the biggest addition to Java 8, they introduce important aspects of functional programming, allow for dismebodied methods, aka functions
+
+The basic syntax is `paramters(s) -> expression`
+
+For multiple paramaters parenthesis are required, for multiple lines of logic in the expression curly braces
+
+The return keyword is optional
+
+# Stream API
+
+The Stream API is a function-style of defining operations on a stream of elements
+
+- Streams are an abstraction which allow defining operations which do not modify the source data, and are lazily loaded
+
+Streams do not store data, they simply operate on data, like filtering, mapping, or reducing it
+
+Streams are divided into two types:
+- Intermediate, return a new stream and are always lazy, they don't execute until the terminal operation is called
+- Terminal, trigger the execution of the stream pipeline, which allows effenciency by performing all operations in a single pass over the data
+
+Reduction operations take a sequnce of elements and combine them into a single result
+- .reduce() and .collect() are implemented by many Stream classes for this purpose
+
+Example:
+```java
+List<Student> students = new ArrayList<>();
+// add students...
+List<Double> grades = students.stream()
+                          .filter(s -> s.isAttending())
+						  .mapToDouble(s -> s.getGrade)
+						  .collect(Collectors.toList());
+```
+
+## Reflections API
+
+Allows you to to modify the behavior of methods and classes at runtime
+
+The required classes are provided under the java.lang.reflect
+
+Give us information about the class, including methods names, method return types, and even which annotaitons are used in the class
+- This is typically used in Frameworks, and in JUnit to detect the @Test annotations
+
+## Optional Class:
+
+The optional call was introduced to reduce the need for excessive null value checking
+
+An Optional is a wrapper object which may or may not contain a value which a few helpful helper methods
+
+They are useful as replacements for null values when returning an empty response from a method
+
+Example:
+
+```java
+public class OptionalExample {
+  public Optional<String> getAmbiguousString(boolean b) {
+    if (true) {
+	  return Optional.of("awesome string!");
+	} else {
+	  return Optional.empty();
+	}
+  }
+
+  public static void main(String[] args) {
+    Optional<String> optString = getAmbiguousString(false);
+	String theString = optString.orElse(""); // specify a fallback value
+	System.out.println(theString);
+	// we can use the String without fear of NullPointerException now
+  }
+}
+```
+
+## Date and Time API:
+
+Before Java 8 Dates and Times were separate, represented by the java.util.Date and java.util.Calendar, and there were issues with these classes
+
+Java introduced a new API through the java.time package which includes:
+- LocalDate - only contains date information
+- LocalTime - only contains time information
+- LocalDateTime - contain date and time information
+- ZonedDateTime - for working with timezones
+- Period - represents a quantity of time (year, months, days)
+- Duration - represents a quantity of time (seconds, nanoseconds)
+- DateTimeFormatter - for representing dates/times in a given format
+
+## Predicate
+
+A Predicate is a functional interface that returns a boolean
+
+# Creational Design Patterns
+
+Creational Design patterns are meant to solve commonly occuring software development problems
+
+## Singleton:
+a design pattern which allows the creation of an object only once in an application
+- This object is then shared across mulitple classes
+- Useful for things like data base connections, or other services
+
+## Factory Design Pattern:
+design pattern that creates objects in which the precise type may not be known until runtime
+
