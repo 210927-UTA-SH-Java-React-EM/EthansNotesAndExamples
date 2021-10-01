@@ -1,12 +1,16 @@
 import java.util.Scanner;
 
 import com.example.exceptions.InvalidCredentialsException;
+import com.example.models.Post;
 import com.example.models.User;
+import com.example.services.PostService;
 import com.example.services.UserService;
 
 public class SocialHubDriver {
 	
 	private static UserService uServ = new UserService("users.txt");
+	private static PostService pServ = new PostService("posts.txt");
+	
 	
 	public static void main(String[] args) {
 
@@ -28,6 +32,36 @@ public class SocialHubDriver {
 					String password = in.nextLine();
 					try {
 						loggedIn = uServ.login(username, password);
+						//
+						System.out.println("Press 1 to read all the post, press 2 to write a post:"); 
+						int c = Integer.parseInt(in.nextLine());
+						if(c == 1)
+						{
+							for(Post post:pServ.readPosts())
+							{
+								System.out.println(post.getTitle()+"--"+post.getContent()+" "+post.getUser());
+							}
+						}
+						else
+						{
+						 
+						 System.out.println("Please enter the title");
+						 String title = in.nextLine();
+						 System.out.println("Please enter the content:");
+						 String content = in.nextLine();
+						 String user = loggedIn.getUsername();
+						
+						 pServ.content(title, content, user);
+						  
+						 for(Post post:pServ.readPosts())
+							{
+								System.out.println(post.getTitle()+"--"+post.getContent()+" "+post.getUser());
+							}
+					       
+						 done = true;
+						}
+						
+						//
 					} catch(InvalidCredentialsException e) {
 						System.out.println("Username or password incorrect. Goodbye");
 						done = true;
