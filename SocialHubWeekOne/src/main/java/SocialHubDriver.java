@@ -2,11 +2,13 @@ import java.util.Scanner;
 
 import com.example.exceptions.InvalidCredentialsException;
 import com.example.models.User;
+import com.example.services.PostService;
 import com.example.services.UserService;
 
 public class SocialHubDriver {
 	
 	private static UserService uServ = new UserService("users.txt");
+	private static PostService pServ = new PostService("posts.txt");
 	
 	public static void main(String[] args) {
 
@@ -55,6 +57,38 @@ public class SocialHubDriver {
 						continue;
 					}
 				}
+			}
+
+
+			/*******************************************************
+								post or not
+			 *******************************************************/
+			//Prompt for posts
+			System.out.println("Creat a Post, View Posts, or Exit? Press 1 to Create a Post, " +
+					"Press 2 to View Posts, or Press 3 to exit");
+			int choice = Integer.parseInt(in.nextLine());
+
+			switch(choice)
+			{
+				case 1:
+					System.out.println("Create a Post");
+					// get info
+					System.out.print("Please enter the title of the Post: ");
+					String title = in.nextLine();
+					System.out.print("Please enter the content of the post: ");
+					String content = in.nextLine();
+					// save info
+					pServ.createNewPost(title, content, loggedIn.getUsername());
+					break;
+				case 2:
+					System.out.println("View Posts");
+					pServ.viewPosts();
+					break;
+				case 3:
+					System.out.println("Exit");
+					done = true;
+					break;
+				default: break;
 			}
 			
 		}
