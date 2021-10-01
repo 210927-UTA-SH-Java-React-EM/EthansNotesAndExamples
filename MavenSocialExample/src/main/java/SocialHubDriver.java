@@ -52,13 +52,13 @@ public class SocialHubDriver {
 	}
 
 	public static void main(String[] args) {
-		String input;
+		String input = "";
 		String[] formattedInput;
 		boolean done = false;
 		User currentUser = null;
 		ArrayList<Post> posts;
 
-		while (!done) {
+		while (!input.equals("exit")) {
 			if (currentUser == null) {
 				System.out.print("Sign up (S) or Log in (L): ");
 				char ans = scanner.nextLine().toUpperCase().charAt(0);
@@ -75,7 +75,7 @@ public class SocialHubDriver {
 					continue;
 				}
 			}
-			
+			System.out.println("Type 'posts' (username) to see a user's posts, 'newPost' to create a new post, or 'exit' to leave.");
 			System.out.print("Social Hub > ");
 			input = scanner.nextLine();
 			formattedInput = input.split(" ");
@@ -105,6 +105,8 @@ public class SocialHubDriver {
 				} else System.out.println("Post successfully created.");
 			}
 		}
+		
+		System.out.println("Goodbye!");
 	}
 
 }

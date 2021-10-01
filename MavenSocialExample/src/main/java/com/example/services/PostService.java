@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import com.example.dao.FileIO;
-import com.example.logging.Logging;
 import com.example.models.Post;
 
 public class PostService {
