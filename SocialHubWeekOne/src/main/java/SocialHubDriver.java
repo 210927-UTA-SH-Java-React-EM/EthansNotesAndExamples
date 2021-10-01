@@ -39,8 +39,15 @@ public class SocialHubDriver {
 						{
 							for(Post post:pServ.readPosts())
 							{
-								System.out.println(post.getTitle()+"--"+post.getContent()+" "+post.getUser());
-							}
+								  
+								 if(post.getUser().equalsIgnoreCase(loggedIn.getUsername()))
+								 {
+							
+								System.out.println(post.getTitle()+" "+post.getContent()+" "+post.getUser());
+								 }
+								 }
+							
+							done = true;
 						}
 						else
 						{
@@ -51,11 +58,14 @@ public class SocialHubDriver {
 						 String content = in.nextLine();
 						 String user = loggedIn.getUsername();
 						
-						 pServ.content(title, content, user);
-						  
+						
 						 for(Post post:pServ.readPosts())
 							{
-								System.out.println(post.getTitle()+"--"+post.getContent()+" "+post.getUser());
+							 	  
+							 if(post.getUser().equalsIgnoreCase(loggedIn.getUsername()))
+							 {
+								 System.out.println(post.getTitle()+" "+post.getContent()+" "+post.getUser());
+							 }
 							}
 					       
 						 done = true;
