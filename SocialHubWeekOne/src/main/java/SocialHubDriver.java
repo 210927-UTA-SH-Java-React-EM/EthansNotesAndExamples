@@ -45,7 +45,7 @@ public class SocialHubDriver {
 							
 								System.out.println(post.getTitle()+" "+post.getContent()+" "+post.getUser());
 								 }
-								 }
+							}
 							
 							done = true;
 						}
@@ -57,8 +57,8 @@ public class SocialHubDriver {
 						 System.out.println("Please enter the content:");
 						 String content = in.nextLine();
 						 String user = loggedIn.getUsername();
-						
-						
+						 
+						pServ.content(title, content, user);
 						 for(Post post:pServ.readPosts())
 							{
 							 	  
