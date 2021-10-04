@@ -1,14 +1,11 @@
 package com.example.exceptions;
 
-public class InvalidCredentialsException extends Exception{
+public class InvalidCredentialsException extends RuntimeException{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public InvalidCredentialsException() {
-		super("User signed in with invalid credentials");
+		super("User provided invalid credentials");
 	}
 
 }

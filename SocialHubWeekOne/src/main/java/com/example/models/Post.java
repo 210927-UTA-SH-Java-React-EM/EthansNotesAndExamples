@@ -3,36 +3,17 @@ package com.example.models;
 import java.io.Serializable;
 
 public class Post implements Serializable{
-	private static final long serialVersionUID = 1L;
 	
-	private String title;
-	private String content;
+	private static final long serialVersionUID = 1L;
 	private String user;
+	private String content;
 	
 	public Post() {
-		super();
+		
 	}
-
-	public Post(String title, String content, String user) {
-		super();
-		this.title = title;
-		this.content = content;
+	
+	public Post(String user, String content) {
 		this.user = user;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
 		this.content = content;
 	}
 
@@ -44,8 +25,17 @@ public class Post implements Serializable{
 		this.user = user;
 	}
 
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
 	@Override
 	public String toString() {
-		return "Post [title=" + title + ", content=" + content + ", user=" + user + "]";
+		return "Post [user=" + user + ", content=" + content + "]";
 	}
+	
 }

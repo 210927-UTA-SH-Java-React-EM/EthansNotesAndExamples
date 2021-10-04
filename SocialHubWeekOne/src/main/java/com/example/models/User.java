@@ -1,6 +1,7 @@
 package com.example.models;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class User implements Serializable{
 
@@ -11,11 +12,11 @@ public class User implements Serializable{
 	private String password;
 	
 	public User() {
-		super();
+		//super();
 	}
-
+	
 	public User(String firstName, String lastName, String username, String password) {
-		super();
+		//super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
@@ -38,14 +39,6 @@ public class User implements Serializable{
 		this.lastName = lastName;
 	}
 
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -54,9 +47,18 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+	
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + ", password="
 				+ password + "]";
 	}
+	
 }
