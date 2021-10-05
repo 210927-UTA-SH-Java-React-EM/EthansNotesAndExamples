@@ -1,0 +1,11 @@
+Gonzalo is working on project 0. He is waiting to see how the database is going to be implemented, but he's made the needed classes for his project.
+
+William hadn't properly set up his AWS account. His goal is to have a solid plan for project 0 and begin coding meaningfully toward it.
+
+Erik L feels fine about his project 0 planning.
+
+Erik K has set up his logging class for project 0. He's got a lot of big plans for the AWS and SQL database work.
+
+Taylor has made a good start on project 0, emulating some of the functionality from the social hub project. His logging is setup and working correctly.
+
+Hector is also working on project 0 and making interfaces.
