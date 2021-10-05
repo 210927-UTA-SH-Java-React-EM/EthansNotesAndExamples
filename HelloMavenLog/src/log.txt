@@ -1,0 +1,14 @@
+2021-10-01 10:27:25 DEBUG LoggingExamples:11 - this statement should be useful for debugging the application
+2021-10-01 10:27:25 INFO  LoggingExamples:12 - informational message use this level of logging
+2021-10-01 10:27:25 WARN  LoggingExamples:13 - something bad potentially could happen
+2021-10-01 10:27:25 ERROR LoggingExamples:14 - something went wrong
+2021-10-01 10:27:25 FATAL LoggingExamples:15 - something very bad happened
+2021-10-01 10:27:52 TRACE LoggingExamples:10 - trace message - very fine-grained
+2021-10-01 10:27:52 DEBUG LoggingExamples:11 - this statement should be useful for debugging the application
+2021-10-01 10:27:52 INFO  LoggingExamples:12 - informational message use this level of logging
+2021-10-01 10:27:52 WARN  LoggingExamples:13 - something bad potentially could happen
+2021-10-01 10:27:52 ERROR LoggingExamples:14 - something went wrong
+2021-10-01 10:27:52 FATAL LoggingExamples:15 - something very bad happened
+2021-10-01 10:28:08 WARN  LoggingExamples:13 - something bad potentially could happen
+2021-10-01 10:28:08 ERROR LoggingExamples:14 - something went wrong
+2021-10-01 10:28:08 FATAL LoggingExamples:15 - something very bad happened
