@@ -1,0 +1,121 @@
+-- More DDL to create a table called users
+create table if not exists users (
+	id int primary key generated always as identity,
+	first_name varchar(30) not null,
+	last_name varchar(30) not null,
+	email varchar(50) not null unique,
+	username varchar(64) not null unique,
+	password varchar(50) not null
+);
+
+-- DDL ALTER, SET, DROP and TRUNCATE keywords
+
+alter table users add column test integer;
+alter table users alter column test set data type varchar(2);
+alter table users alter column test set default 'hi';
+
+-- Update all null values to 'hi'
+update users set test = coalesce(test, 'hi');
+
+alter table users alter column test set not null;
+alter table users drop column test;
+
+-- Truncate table - removes all table data but leave the table
+truncate table users;
+
+-- Drop table -- completely removes the table
+drop table users;
+
+-- DML Statements
+-- You can insert a single value into the table
+insert into users (first_name, last_name, email, username, password) values
+	('Morty', 'Smith', 'morty@mail.com', 'mortysmith', 'ihaterick');
+
+-- You can insert multiple values into the table
+insert into users (first_name, last_name, email, username, password) values
+	('Summer', 'Smith', 'summer@mail.com', 'summersmith', 'sssumertime'),
+	('Gear', 'Head', 'gear@mail.com', 'gearhead', 'gearhead'),
+	('Bird', 'Person', 'bird@mail.com', 'birdperson', 'birdwars'),
+	('Rick', 'Sanchez', 'rick@mail.com', 'ricksanchez', 'ilovemorty');
+
+-- We can update specific entries in the table with UPDATE
+update users set email = 'frankenbird@mail.com' where id = 4;
+
+-- We can also delete a specific user from the table
+delete from users where id = 4;
+
+-- DQL Queries
+
+-- We can grab everything from a table
+select * from users;
+
+-- We can specify which columns we want returned
+select first_name, last_name from users;
+
+-- We can assign alias' to change the title of an attribute in the result set
+select username as alias from users;
+
+-- Create a table called posts with the attributes
+	-- postId number and primary key
+	-- autorId number
+	-- content string (varargs)
+
+-- Insert posts into table, one from each user above
+
+-- Select all posts
+
+-- Select a post from a specific user
+
+-- We can use Wher to narrow down out search results
+select * from users where id >2;
+
+-- We can use the keyword LIKE with wildcards to search for strings
+-- % wildcard works as a standin for 0 or more characters
+select username from users where username like 'm%';
+select username from users where username like '%smith';
+-- _ wildcard is a standin for exactly one character
+select username from users where username like 'gear_ead';
+select username from users where username like '_i%';
+
+--Sorting/ordering with the ORDER BY Keyword
+select * from users order by username; 
+select * from users order by username desc;
+
+-- BETWEEN keyword example
+
+select * from users where id between 2 and 4;
+
+-- IN keyword example
+select * from users where first_name in('Morty', 'Rick', 'Summer');
+
+-- Creating a Many-to-one/one-to-many relationship
+
+create table if not exists posts(
+	post_id int primary key generated always as identity,
+	author_id int references users(id) not null,
+	wall_user_id int references users(id) not null,
+	post_content varchar(500) not null
+);
+
+-- After creating posts, you cannot drop a user while posts exist
+-- Because posts depends on users, you can fix this issue by using cascade
+
+drop table users cascade;
+
+-- Creating a many-to-many relationship with a junction table
+
+create table if not exists post_likes_junction(
+	user_id int references users(id) not null,
+	post_id int references posts(post_id) not null,
+	primary key(user_id, post_id)
+);
+
+-- Use your DML skills to do the following:
+	-- Gear Head should post a messags on Ricks wall, Morty likes that post
+	-- Morty should post a message on Ricks wall, Summer and Rick like that post
+	-- Summer posts a message on Morty's wall, Morty, and Gear Head like that post 
+
+
+
+
+

@@ -1,0 +1,8 @@
+-- Use double dash to create comments in an SQL file
+
+-- DDL to create our database and DCL to grant access to our users
+create user socialuser with password 'password';
+
+create database socialdb;
+
+grant all privileges on database socialdb to socialuser;
