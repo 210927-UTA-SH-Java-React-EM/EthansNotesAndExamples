@@ -29,7 +29,7 @@ a thread is a subset of a process that is also an independent sequence of execut
 
 - Threads of the main process wil run in the same memory space, but managed independently by the scheduler
 
-Every thread has its own call stack where it stores local variable references, but since they share the same heap memory multiple threads can access the same objects in memory
+ Every thread has its own call stack where it stores local variable references, but since they share the same heap memory multiple threads can access the same objects in memory
 
 Mutlithreading is the idea of using multiple threads in an application to achieve parallelism
 - Each thread can perform its own task increasing effiency
@@ -42,7 +42,7 @@ In general it is best practice to not attemp to implement multithreading on your
 # States of Threads
 
 Threads follow a lifecycle with six different states:
-
+ 
 1. New: newly created thread that has not started executing
 2. Runnable: either running or ready for execution but waiting for its resource allocation
 3. Blocked: waiting to acquirea monitor lock to enter or re-enter a synchronized block/method
@@ -103,7 +103,7 @@ In this problem we have a fixed size buffer that is shared between the producer 
 - The producer adds to the buffer
 - The consumer takes from the buffer
 
-The proble is that data should only be added if the buffer is not full, and data should only be consumed if the buffer is not empty
+The problem is that data should only be added if the buffer is not full, and data should only be consumed if the buffer is not empty
 
 To solve this we can use the synchronized keyword, as well as the .wait() and .notify() methods to communicate across threads
 - .wait() can pause the consumer depending on the amount of data in the buffer
@@ -180,7 +180,7 @@ Java 8 implemented many new and useful features including:
 # Functional Interfaces
 
 Functional interfaces are interfaces with only one abstract method
-- Implicitly created by lamdas
+- Implicitly created by lambdas
 - Can explicitly be created for use by lambdas
 
 # Lambdas
@@ -284,3 +284,4 @@ a design pattern which allows the creation of an object only once in an applicat
 ## Factory Design Pattern:
 design pattern that creates objects in which the precise type may not be known until runtime
 
+ 
