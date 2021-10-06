@@ -1,0 +1,6 @@
+2021-10-06 13:27:51 WARN  Logging:40 - User tried logging in that does not exist
+2021-10-06 13:28:42 WARN  Logging:44 - User tried to login with invalid credentials
+2021-10-06 13:29:14 INFO  Logging:48 - User was logged in
+2021-10-06 13:37:27 INFO  Logging:26 - New user was registered
+2021-10-06 13:40:17 INFO  Logging:26 - New user was registered
+2021-10-06 13:43:26 INFO  Logging:26 - New user was registered
