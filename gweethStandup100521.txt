@@ -9,3 +9,6 @@ Erik K has set up his logging class for project 0. He's got a lot of big plans f
 Taylor has made a good start on project 0, emulating some of the functionality from the social hub project. His logging is setup and working correctly.
 
 Hector is also working on project 0 and making interfaces.
+
+user: postgres
+pass: Unhackable9651

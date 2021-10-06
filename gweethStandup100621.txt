@@ -1,0 +1,12 @@
+Gonzalo created tables for the entities he needed to from project 0 into his relational database. He hopes he can connect his database today.
+
+William is also setting up his project 0 database tables. He's having issues with permissions.
+
+Erik L. is setting up his tables for the database.
+
+Eric K. is trying to stay focused and not get too focused on any one thing with his project. 
+
+Taylor is trying to get his methods he's testing in his main driver into userService classes.
+
+Hector is looking forward to learning how to pull the data from his database and use it in his project.
+
