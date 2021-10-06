@@ -31,6 +31,19 @@ public class SocialHubDriver {
 		uList = uDao.getAllUsers();
 		System.out.println(uList);
 	*/
+		
+		morty.setEmail("newMail@mail.com");
+		morty.setUsername("mortdawg1738");
+		
+		uDao.updateUser(morty);
+		
+		uDao.getUserByUsername("mortdawg1738");
+		System.out.println(morty);
+		
+		User birdPerson = uDao.getUserByUsername("birdperson");
+		uDao.deleteUser(birdPerson);
+		uList = uDao.getAllUsers();
+		System.out.println(uList);
 	}
 
 }
