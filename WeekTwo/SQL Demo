@@ -165,3 +165,64 @@ select lower(first_name) as first, lower(last_name) as last from users;
 
 select upper(concat(first_name, last_name)) as name from users;
 
+-- Stored Procedures don't return anything, are useful for adding elements to a table
+create or replace procedure create_post(a_id int, w_id int, post varchar(500))
+as $$
+begin
+	insert into posts(author_id, wall_user_id, post_content) values (a_id, w_id, post);
+end;
+$$ language 'plpgsql';
+
+-- To use this procedure use the call keyword
+call create_post(1,1, 'Gee rick, that was a great party');
+
+select * from posts;
+
+-- Functions return a value
+create or replace function like_check(p_id int)
+returns int as $body$
+declare likes int;
+begin
+	select into likes count(*) from post_likes_junction where p_id = post_id;
+	return likes;
+end;
+$body$ language 'plpgsql';
+
+-- To call a function you use the select keyword
+select like_check(4);
+
+-- Sequences are just a sequence of numbers that goes from 1 to the next
+create sequence counter start 1;
+select nextval('counter');
+
+create table following (
+	f_id int primary key,
+	follower_id int,
+	followie_if int
+);
+
+-- We can use a sequence in conjunction with triggers to create auto generated field values
+create or replace function ex_trigger()
+returns trigger as $$
+begin
+	new.f_id = nextval('counter');
+	return new;
+end;
+$$ language 'plpgsql';
+
+-- Now we actually use that function with a trigger to auto generate the ids for us
+create trigger id_trigger before insert on following for each row execute procedure ex_trigger();
+
+insert into following(follower_id, followie_if) values (1,2);
+insert into following(follower_id, followie_if) values (2,1);
+
+select * from following;
+
+-- View, a virtualized representation of a table or subset of a table
+create view post_display as select username, post_content from posts, users where id = author_id;
+
+select * from post_display;
+
+
+
+

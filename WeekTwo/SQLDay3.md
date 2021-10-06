@@ -68,3 +68,44 @@ This is a design pattern we will be following to separate our business logic fro
 - Implement that interface with concrete DAO classes
 
 This pattern results in reusable code, and cleaner project structure
+
+# PL/SQL (Procedural Language SQL):
+allows us to create functions and other reusable bits of sql
+- It is closer to a programming language
+
+## Sequence:
+An object that holds a number that starts a certain point, and increments util it potentially reaches a max value
+- You increment with NEXTVAL
+
+## Trigger:
+A block of code that executes when an event happens
+
+## Cursor:
+A pointer to a result set, you can use these to loop programatically through the output of a select statement
+
+## Views:
+Virtual table in SQL, they are created using DQL statements
+
+Advantages of Views"
+- Gives access to some but not all of the data in a table
+- Hide complexity of a database from users
+- Allow users to query normalized tables easily
+- Changes to the underlying table(s) are automatically reflected in views
+
+## Stored Procedures:
+Reusable code in PL/SQL that has these properties
+- Don't return anything
+- May or may not contain IN and OUT parameters
+- They allow any DML statment within
+- Can call other stored procedures
+- Cannot use them in DML statements
+
+## Functions:
+Reusable code in PL/SQL that returns a value and has these properties:
+- Allow cursors
+- Should be a single value
+- They may or may not contain IN parameters
+- Only Select statements are allowed
+- Can call other functions
+- Can be used in any DML statement
+- You have to use a DML statement use them
