@@ -1,0 +1,11 @@
+Gonzalo finally has his database connection and he's been able to retrieve data. He had a tough time with dependencies and his db connection.
+
+William was using the social hub as a template to apply some of its principles to his project zero.
+
+Erik L had his power go out while working on his project. He made a little progress.
+
+Eric K got his users table plugged into his db. Needs to get his CRUD operations to work.
+
+Taylor had to delete his database instance yesterday due to a strange issue establishing a connection. He is trying to insert and query data today from his Java application.
+
+Hector is also working on establishing his database connection.
