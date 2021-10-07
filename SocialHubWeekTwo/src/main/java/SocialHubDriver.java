@@ -2,15 +2,20 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+import com.example.dao.PostDao;
+import com.example.dao.PostDaoDB;
 import com.example.dao.UserDao;
 import com.example.dao.UserDaoDB;
 import com.example.models.User;
+import com.example.services.PostService;
 import com.example.services.UserService;
 
 public class SocialHubDriver {
 	
 	private static UserDao uDao = new UserDaoDB();
 	private static UserService uServ = new UserService(uDao);
+	private static PostDao pDao = new PostDaoDB();
+	private static PostService pServ = new PostService(pDao);
 	
 	public static void main(String[] args) {
 		
@@ -59,10 +64,27 @@ public class SocialHubDriver {
 						System.out.println("Please try signing up with a different one");
 					}
 				}
+			} else {
+				System.out.println("To view posts press 1, to create a post press 2");
+				int choice = Integer.parseInt(in.nextLine());
+				if(choice == 1) {
+					//Do some logic to view the post
+				}
+				else {
+					//Ask them for input, and create the post
+					System.out.println("Please speak your mind below:");
+					String content = in.nextLine();
+					pServ.addPost(u.getId(), u.getId(), content);
+					System.out.println("Post was received, are you finished? Press 1 for yes, 2 for no");
+					choice = Integer.parseInt(in.nextLine());
+					done = (choice == 1) ? true : false;
+				}
 			}
 			
 		}
 		
+		System.out.println("Goodbye :)");
+		in.close();
 		
 		/*
 		List<User> uList = uDao.getAllUsers();

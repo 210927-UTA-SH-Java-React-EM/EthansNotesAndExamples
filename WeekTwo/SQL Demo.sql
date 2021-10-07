@@ -223,6 +223,56 @@ create view post_display as select username, post_content from posts, users wher
 
 select * from post_display;
 
+-- Cursors are pointers to a temporary workspace, they hold rows returned by an sql statement
+-- The set of rows it holds is known as the result set or active set
+
+-- We use cursors to return multiple rows of data from a function
+CREATE OR REPLACE FUNCTION get_user_posts(u_id int)
+RETURNS refcursor AS $$
+DECLARE REF refcursor;
+BEGIN
+	OPEN REF FOR SELECT * FROM posts WHERE author_id = u_id;
+	RETURN REF;
+END;
+$$ LANGUAGE 'plpgsql';
+
+-- In order to view the reference cursor we must turnoff auto commit
+select get_user_posts(2);
+commit;
+
+create or replace function get_all_posts()
+returns refcursor as $$
+declare ref refcursor;
+begin
+	open ref for select u.username, p.post_id, p.author_id, p.wall_user_id, p.post_content
+				 from users u, posts p
+				 where u.id = p.author_id;
+	return ref;
+end;
+$$ language 'plpgsql';
+
+select get_all_posts();
+commit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
