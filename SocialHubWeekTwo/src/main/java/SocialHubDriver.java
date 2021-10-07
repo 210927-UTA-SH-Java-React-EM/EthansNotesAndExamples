@@ -6,6 +6,8 @@ import com.example.dao.PostDao;
 import com.example.dao.PostDaoDB;
 import com.example.dao.UserDao;
 import com.example.dao.UserDaoDB;
+import com.example.models.Post;
+import com.example.models.PostDisplay;
 import com.example.models.User;
 import com.example.services.PostService;
 import com.example.services.UserService;
@@ -40,6 +42,7 @@ public class SocialHubDriver {
 					try {
 						u = uServ.signIn(username, password);
 						System.out.println("Welcome " + u.getUsername());
+						u = pServ.loadUserPosts(u);
 					} catch(Exception e) {
 						System.out.println("Username or password was incorrect, guess wrong again and you get pushed into the pit of misery");
 					}
@@ -65,20 +68,36 @@ public class SocialHubDriver {
 					}
 				}
 			} else {
-				System.out.println("To view posts press 1, to create a post press 2");
+				System.out.println("To view posts press 1, to create a post press 2, press 3 to view your posts");
 				int choice = Integer.parseInt(in.nextLine());
 				if(choice == 1) {
-					//Do some logic to view the post
+					
+					List<PostDisplay> posts = pServ.getAllPosts();
+					for(PostDisplay post: posts) {
+						System.out.println(post.getUsername() + ":");
+						System.out.println(post.getContent());
+						System.out.println();
+					}
 				}
-				else {
+				else if(choice == 2){
 					//Ask them for input, and create the post
 					System.out.println("Please speak your mind below:");
 					String content = in.nextLine();
 					pServ.addPost(u.getId(), u.getId(), content);
-					System.out.println("Post was received, are you finished? Press 1 for yes, 2 for no");
-					choice = Integer.parseInt(in.nextLine());
-					done = (choice == 1) ? true : false;
+					u = pServ.loadUserPosts(u);
+					System.out.println("Post was received");
 				}
+				else {
+					
+					for(Post post: u.getPosts()) {
+						System.out.println(u.getUsername() + ":");
+						System.out.println(post.getPostContent());
+						System.out.println();
+					}
+				}
+				System.out.println("Are you finished? Press 1 for yes, 2 for no");
+				choice = Integer.parseInt(in.nextLine());
+				done = (choice == 1);
 			}
 			
 		}
