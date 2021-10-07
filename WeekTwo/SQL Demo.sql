@@ -254,25 +254,46 @@ $$ language 'plpgsql';
 select get_all_posts();
 commit;
 
+-- Joins and Set Operators
+-- Super simple join examples with the junction
+select * from users u inner join posts p on u.id = p.author_id;
 
+select * from users u full join posts p on u.id = p.author_id;
 
+select * from users u left join posts p on u.id = p.author_id;
 
+select * from users u right join posts p on u.id = p.author_id;
 
+-- Get whats posts each user liked
+select u.username, p2.post_content as liked_content
+from users u
+inner join(select * from posts p inner join post_likes_junction plj on p.post_id = plj.post_id) as p2
+on u.id = p2.user_id;
 
+-- Count users with the greatest number of posts
+select u.id, u.first_name, u.last_name, count(*) as count_num from users u
+left join posts p on p.author_id = u.id
+group by u.id
+order by count_num desc;
 
+-- Rank the users with the most total likes
+select count(u.id) as like_count, u.username
+from users u
+inner join (select * from posts p inner join post_likes_junction plj on p.post_id = plj.post_id) as u2 on u2.author_id = u.id
+group by u.username
+order by like_count desc;
 
+select * from users u inner join (select * from posts p inner join post_likes_junction plj on p.post_id = plj.post_id) as u2 on u2.author_id = u.id;
 
+-- Set Operators
+select u.username from users u union select p.post_content from posts p, users u where u.id = p.author_id;
 
+-- Get all posts with a like on it
+select post_content from posts intersect select p.post_content from post_likes_junction plj, posts p where p.post_id = plj.post_id;
 
+-- Get all posts without a like on them
+select post_content from posts except select p.post_content from post_likes_junction plj, posts p where p.post_id = plj.post_id;
 
-
-
-
-
-
-
-
-
-
-
-
+--Creating an index
+-- There are other parameter you can include while creating an index, however it is not important for our training
+create index uname on users(username);

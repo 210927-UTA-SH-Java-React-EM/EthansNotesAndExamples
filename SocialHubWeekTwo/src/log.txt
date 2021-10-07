@@ -12,3 +12,11 @@
 2021-10-07 10:42:45 INFO  Logging:48 - User was logged in
 2021-10-07 10:47:38 INFO  Logging:48 - User was logged in
 2021-10-07 10:48:44 INFO  Logging:48 - User was logged in
+2021-10-07 14:04:38 INFO  Logging:48 - User was logged in
+2021-10-07 14:05:05 INFO  Logging:48 - User was logged in
+2021-10-07 14:10:21 WARN  Logging:40 - User tried logging in that does not exist
+2021-10-07 14:10:46 WARN  Logging:40 - User tried logging in that does not exist
+2021-10-07 14:10:47 INFO  Logging:48 - User was logged in
+2021-10-07 14:13:07 WARN  Logging:40 - User tried logging in that does not exist
+2021-10-07 14:13:07 INFO  Logging:48 - User was logged in
+2021-10-07 14:13:07 WARN  Logging:44 - User tried to login with invalid credentials
