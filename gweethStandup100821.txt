@@ -1,0 +1,12 @@
+Gonzalo sorted out his login and signup systems for his project 0. He's struggling with opening new accounts for his users.
+
+William has reversed engineer socialhub to meet his needs for project 0. 
+
+Erik L says he's a little behind, will pull some all-nighters. He's working on a separate database for his "employees" to use.
+
+Eric K has an accounts table and a junction table. He's got some clever ideas with his SQL.
+
+Taylor is writing a lot of dialogue and scanner input to make his program realistic. Hasn't written a lot of SQL.
+
+Hector feels like he's behind; he feels like he can make it, though.
+
