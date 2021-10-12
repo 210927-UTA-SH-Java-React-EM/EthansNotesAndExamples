@@ -274,3 +274,121 @@ This only applies when a single element is targeted by multiple CSS declarations
 2. ID selector
 3. Class Attribute and Pseudo-class selectors
 4. Element and Psuedo-element selectors
+
+# Responsive Web Design
+the approach that allows websites to render on all devices and screen sizes by automatically adapting the screen
+
+Done through CSS using various settings to serve different style properties based on screen size
+- You use a combination of flexible grids, flex boxes, flexible images, and media queries
+
+## Media Queries
+
+In CSS3 support for reponsive web design was added through the use of media queries, it allows for changes in the webpage for different devices without any change in the html
+
+A media query consists of an optional media type, and any number of media feature expressions
+- You can combine multiple queries with the use of logical operators
+- They are case sensitive
+- You use the @media rule to incorporate it with a block of css
+
+Media Types:
+- all: used for all media type devices
+- print: used for printers
+- screen: used for any screen
+- speech: used for screen-readers
+
+Media features: describes the specific characteristics of the use agent, output device or environment.
+- grid
+- height
+- width
+- hover
+- and more
+
+Logical operators include:
+- not
+- and
+- only
+
+## Flex Boxes
+
+Flex box is a one-dimensional layout method for arranging elements in rows or columns
+- It is useful for designing flexibl, responsize layouts without using float of positions
+- Create a flex container by setting the css property of `display` to `flex` on any element
+- Any element inside of the flex container is a flex item, and will be reponsive to the flex box properties
+
+Flex box properties:
+- Flex direction: used to change which direction the flex items display (row vs column)
+- Flex wrap: used to define if the items should wrap
+- Flex flow: short hand combination of the two above
+- Justify content: used to align items horizontally within the container
+- Align Items: used to align items vertically in the container
+
+Flex Item properties:
+- order
+- flex-grow
+- flex-shrink
+- flex-basis
+- flex property
+- align-self
+
+## Import fonts in CSS
+you can use the @font-face rule in css
+
+Inside you have the properties that describe:
+- the font family
+- the font fetch
+- the font weight
+- the font stretch
+- the font style
+- the font source
+
+## CSS Animations
+
+You can create animations using css and @keyframes
+
+With the @keyframe rul you can defin different stages of an animation, and set different properties at each stage
+
+## CSS Transitions
+
+Transitions allows you to define the changes for HTML elements, the specific time intervals, the speed of acceleration, and much more
+
+You use the tranistion property to describe the transition effect
+
+# Bootstrap
+
+Bootstrap is an open source framework and mobile first approach for developing responsive websites
+- create reponsive website quickly
+
+You can get started with bootstrap by going to this website:
+
+https://getbootstrap.com/docs/5.0/getting-started/introduction/
+
+Bootstrap follows a grid system made up of a series of containers, rows, and columns to layout and align containers
+
+Container is the most basic element that we use to wrap content on the website
+
+Rows are horizontal slices of the screen
+
+Columns are vertical slices of the screen, you can have at most 12 colunms in a single row
+
+To make use of these, and many other components you simply just have to include the specified class on the elements themselves
+
+## UI Design
+
+There are a few things to consider when designing your webpages
+- Color can influence mood or emotion a user feels they look at your page
+- Contrast: you want to be able to easily determine and read the different parts and text on your page
+- Alignment: try to keep a consistant alignment through out the page
+- Whitespace: use white to your advantage, you dont want all of your elements crammed together, but you also dont want too much
+- Scale: use scale to emphasize important titles and text, but not to just make everything huge or too small
+- Typography: try to stick to professional, appropriate fonts, google is a good source for fonts
+
+# Hosting Static Sites on S3
+
+1. Choose the bucket we created the other day
+2. Select Overivew > Create Folder, this is where you will upload staic HTML files from your computer to be hosted on the S3 bucket
+3. Select Upload, and upload the html and css file
+4. Select Properties
+5. Select Static Website hosting
+6. Select Use this bucket to host a website, then enter the name of the file we are hosting
+7. Return to your bucket, click on the uploaded html file, click make public
+8. Visit the object url and you will see your static webpage hosted on your configured S3 bucket
