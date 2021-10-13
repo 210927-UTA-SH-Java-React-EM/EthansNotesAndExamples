@@ -118,3 +118,5 @@ try{
     console.log(e.name);
     console.log(e.message);
 }
+
+throw new ClassError('We dont catch this one');
