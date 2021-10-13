@@ -10,7 +10,7 @@ const Book = function (t,a){
     };
 };
 
-const book1 = new Book('The Hobbit', 'JR Tolkien');
+const book1 = new Book('The Hobbit', 'JayAreAre Tolkien');
 book1.summary();
 
 book1.a = 'Not the hobbit';
