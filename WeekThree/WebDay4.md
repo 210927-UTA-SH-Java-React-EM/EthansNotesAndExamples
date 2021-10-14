@@ -172,3 +172,28 @@ Capturing only works with event handlers that are registered with .addEventListe
 2. Have the user input some information about themselves
 3. On Submit, take in the users information, and display it on the page
 4. If there is already some user info on the page, the new info should be rendered below the orginal
+
+# Symbol:
+a primitive datatype introduced in ES6, typically used to obtain unique indentifiers
+- Many API's have a symbol that has been defined as a constant to represent a method
+    - Such as Symbol.iterator, Symbol.hasInstance, Symbol.toPrimitive
+- To obtain a Symbol you call `Symbol()`
+
+Using symbols, makes it harder to modify a given using the symbol, to do so you may need to use the Object.getOwnPropertySymbols() method to obtain an array of all symbols on the object
+
+# Iterators, Iterables, and Generators
+
+## Iterator:
+an object that allows you to traverse values associated within a defined sequence
+- Iterators have a `next()` that returns two values, the next value, and done which is true or false
+- You can retrieve an iterator from an array with the method called `iterator()`
+- If the iterator is finished, every subsequent call to next will return next = undefined, done = true
+
+## Generators:
+a special kind of iterator that returns a new value everytime `next()` is called until it reaches the `yield` keyword
+- create an generator with the `*function` syntax
+
+## Iterable:
+an object that implements the `@@iterator` method (such as any array) is considered to be an iterable
+
+This means that they define iteration behavior and can be used in constructs such as a `for of loop` We mape use the yield keyword like we did in our generator function, but we define `@@iterator`
