@@ -197,3 +197,117 @@ a special kind of iterator that returns a new value everytime `next()` is called
 an object that implements the `@@iterator` method (such as any array) is considered to be an iterable
 
 This means that they define iteration behavior and can be used in constructs such as a `for of loop` We mape use the yield keyword like we did in our generator function, but we define `@@iterator`
+
+# Asynchronous Javascript:
+program does not need to wait for a specific task that takes a long time
+
+It simply start executing the function, then moves on to the next function while it finishes
+- You can send a request/start a lengthy function, and forget about it
+- Then when you receive the reponse/the function is finished you can handle it
+- You program does not need to wait for the response in the mean time
+
+This is useful with API calls, and other processes that could hold up or "block" the execution of your programs main thread
+
+## How Asynchronous Javascript Works
+
+Javascript implements a stack where functions calls are stored
+- It uses a single thread to add, and call functions on the stack one at a time, until the stack is empty
+- This is how basic synchronous programming works
+
+Javascript also has a built in queue, and the browser/node runtime environment has extra threads that can used by Javascript, the queue is used by the event loop
+
+## Javascript Event Loop
+
+When an asynchronous call happens, Javascript allows the browser thread/web api to handle the specific call, while moving on in the stack
+
+Once the web api is done processing the function, it will return the callback or the response to the queue, then the next time the call stack is empty, the event loop will return response/callback from the queue
+
+## Basic Animation of the event loop
+![Event Loop](gif14.1.gif)
+
+## Basic Steps of the Event Loop in JS
+
+1. Asynchronous call gets added to the stack
+2. JS decides to hand it off to the web api where it processes
+3. Other functions can be added and executed on the call stack while the web api works
+4. Once the web api has a response it gets added to the queue
+5. The event loop checks the queue when the call stack is empty to see if something needs to be added to the call stack
+6. Our response/callback is added to call stack and process as normal
+
+https://blog.bitsrc.io/understanding-asynchronous-javascript-the-event-loop-74cd408419ff
+
+# AJAX (Asynchronous Javascript and XML):
+the process of exchanging data from a web server asynchronously with the help of XML, HTML, CSS, and Javascript
+- We use it to load data from a server, and selectively update some part of a webpage without reloading
+- Uses the browssers built in XMLHttpRequest object (XHR) to send and receive data from webserveres asynchronously
+
+The AJAX Workflow
+
+1. A client event occurs on the webpage
+2. Javascript creates the XMLHttpRequest
+3. The XMLHttpRequest Object makes an async request to the server
+4. The server process the received request
+5. The server create a response and sends data back to the browser
+6. The browser processes the returned data using Javascript
+7. The page content with updated with Javascript
+
+There are 4 steps in creating an AJAX Request
+1. Create a XMLHttpRequest Object with `new XMLHttpRequest()`
+2. Set the readystatechange callback function
+3. Use the `.open(method, url, async)` method of the XHR object is to open the connection to the server
+    - method is a string specifying which HTTP method is being used (GET, POST, DELETE...)
+4. Use the `.send()` method to send the request to the server to be processed
+
+The server then sends back a response which can be processed, this is returned in the form of:
+- responseText: the response as a string
+- responseXML: the response as XML
+- status: the status code for the response
+- statusText: text representation of the status code
+
+Use the XHR's properties readyState and the function onreadystatechange to observe when the response is ready
+
+The readyState has 5 states:
+- 0 is not initalizes
+- 1 is connection established
+- 2 request received by the server
+- 3 server is processing the request
+- 4 request finished, response ready
+
+You can set the function onreadystatechange to a custom function to handle the reponse when its ready
+
+# JSON (Javascript Object Notation):
+data exchange format that is easy to ready by humans and machines
+- Stringified Javascript object
+
+JSON useful for:
+- Transmitting data between a server and web application
+- Transmitting serialized structured data
+- Performing async data calls without needing to refresh the page
+- Restful API's
+
+# Working with JSON in AJAX
+
+The XHR object can only send text data, however we can send JSON by serializing it with JSON.stringify()
+- JSON.stringify() will convert a JSON object to a string
+
+To get JSON from a response body, we want to use JSON.parse() which will convert the serialized text data to a JSON object
+
+# Promises
+
+Javascript uses promises for async opperations, they are placeholders for a future value. Many async functions return implicitly
+
+Promises in Javascript are objects, and you create them using the new keyword
+
+Promises take a callback function called the executor, this automatically runs the when the object is created
+- The executor also takes two callbacks, resolve and reject
+    - `resolve(value)` return the result of the job once it finishes sucessfully
+    - `reject(error)` is called when there is an error with processing the job
+
+Promises have a property called status which gives us information about the state of the object. The promise can be in one of three states
+- pending
+- fulfilled
+- rejected
+
+The promise objects connects the executor and any consuming functions which will receieve the result or the error from the promise
+
+You would use `.then()` `.catch()` and `.finally()` methods on the promise object to consume (chain) the results or errors of the promise object
