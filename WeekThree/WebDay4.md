@@ -166,3 +166,9 @@ Event capturing is the opposite of bubbling, instead of going from the target el
 - Following a top down approach
 
 Capturing only works with event handlers that are registered with .addEventListener() with an added third argument that is set to true
+
+# Hands on
+1. Create an HTML Page with a form
+2. Have the user input some information about themselves
+3. On Submit, take in the users information, and display it on the page
+4. If there is already some user info on the page, the new info should be rendered below the orginal

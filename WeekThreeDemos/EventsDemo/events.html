@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello Events</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Bubble</h1>
+        <div class="bubble">DIV
+            <p class="bubble">P
+                <a class="bubble">Click Me</a>
+            </p>
+        </div>
+
+        <h1>Capture</h1>
+        <div class="capture"> DIV
+            <p class="capture"> P
+                <a class="capture"> Click Me</a>
+            </p>
+        </div>
+
+        <h1>Welcome to Social Hub</h1>
+        <h3>Please Sign In</h3>
+
+        <form id="login">
+            <label for='username'>Username: </label>
+            <input id='username' type='text' name='username' maxlength='50' required onkeypress="printPressed(event)"/>
+            <label for='password'>Password: </label>
+            <input id='password' type='password' name='password' minlength='8' required/>
+            <input type='submit' value='Login'/>
+        </form>
+    </body>
+    <script src="events.js"></script>
+</html>
