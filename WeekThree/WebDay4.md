@@ -97,3 +97,72 @@ There are three ways you can register an event handler:
 2. You can set the event property of the html element to a predefined JS function
 3. You can use the `element.addEventListener(event, function, useCapture)`
 
+# The Event Object
+
+In Javascript events are represented by an Event Object
+
+Event Objects have the following properties and methods:
+- bubbles: a boolean value which indicates the propagation method, it is true by default
+- currentTarget: a reference to the DOM element whose event listener triggered the specific event
+    - This is different from the event that initally triggered the event as a single event can trigger multple event listeners through propagation
+- preventDefault(): cancel the event/prevents the default action of the event
+- stopPropagation(): prevents the event from propagating further
+- target: a reference to the DOM element that triggered the event
+- timeStamp: the time of the event in miliseconds
+- type: the type of the event
+
+## Types of Events
+
+There are several subclasses of the Event Object, which all include their own properties as well as the properties of the event object
+- A complete list of event objects can be found here: https://www.w3schools.com/jsref/obj_events.asp
+
+## MouseEvent
+
+This is an event that is generated when the user interacts with elements on the page with a mouse
+
+Events like click, onmouseenter, onmouseleave, and so create mouse event objects
+
+The MouseEvent object has many properties that hold information about the state of the machine when the event occured:
+
+- Coordinates of the mouse relative to the window: clientX and clientY
+- Coordinates of the mouse relative to the last event: movementX, movementY
+- Coordniates of the mouse relative to the target: offsetX, offsetY
+- Coordinates of the mouse relative to the screen: screenX, screenY
+- Whether alt, ctrl, or shift were held when clicking: altKey, ctrlKey, and shiftKey
+- Which mouse button was hit: button, buttons, which
+
+## KeyboardEvent
+
+This is an event that is generated when the user interacts with elements on the page with their keyboard
+
+You would typically use this to add funcionality to webforms
+
+Events onkeydown, onkeypress, and onkeyup create KeyboardEvent objects
+
+This object has the following properties:
+- Whether alt, ctrl, or shift were hit during the event: altKey, ctrlKey, shiftKey
+- Which key was hit: key, keycode, and which
+- Whether the key is being held down: repeat
+
+# Bubbling/Capturing
+
+Javascript has something called event propagation, which essentially how the event flows through the components on the page
+
+There are two ways in which an event can propagate, the first is called bubbling, the second is called capturing
+
+## Event Bubbling
+
+Bubbling is the default event propagating for event listeners
+- Follow a bottom up approach
+- The event starts at the target element, then "bubbles" its way up the tree
+
+Essentially when an event happens, it first goes to any handlers on that element, then that elements parents, then grandparents, and so on until it reaches the top of the html document
+
+Bubbling works for all handlers, regardless of how they are registered
+
+## Event Capturing
+
+Event capturing is the opposite of bubbling, instead of going from the target element to the top of the tree, it will start at the top and work its way down to the target element
+- Following a top down approach
+
+Capturing only works with event handlers that are registered with .addEventListener() with an added third argument that is set to true
