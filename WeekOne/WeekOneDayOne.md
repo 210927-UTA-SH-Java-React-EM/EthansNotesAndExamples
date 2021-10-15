@@ -63,7 +63,7 @@ Waterfall is a linear approach, as you finish one stop you move onto the next, t
 Advantages of Waterfall
 
 - Easy to manage workflow
-- Well suited for small teams, or short term projects, that will not require and requirement chanfes
+- Well suited for small teams, or short term projects, that will not require and requirement changes
 - Generally results in faster devilery of product
 - Process and results can easily documented
 - Easy to adapt to shifting teams since the steps are clearly laid out
