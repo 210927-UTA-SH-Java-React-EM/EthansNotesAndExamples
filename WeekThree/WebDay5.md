@@ -43,3 +43,12 @@ Use the `window.clearTimeout(timeoutVariable)` to stop a timeout before the exec
 `window.setInterval(callbackFunction, milliseconds)` continually executes the callback function ever so many milliseconds
 
 Use `window.clearInterval(intervalVariable)` to stop the interval, similar clearTimeout
+
+
+# Hands On
+1. Create an HTML page that has an input field and a button
+2. On submission, make a call to the PokeAPI to get the information about the pokemon input in the field
+- https://pokeapi.co/api/v2/pokemon/{id or name}/
+3. Once you receive the information, display the pokemons name, and an image of the pokemon
+
+More information about the API: https://pokeapi.co/docs/v2#pokemon
