@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Who Dat Pokémon</title>
+    <script src="pokemon.js" async></script>
+    <meta charset='utf-8'>
+    <link rel="icon" href='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsOhyCfIG6J5CuR6uiI7Zx8BGb8yFSt75fjC28whaJQQmcLRBbRB23pgBxnNyQvI-T0w&usqp=CAU'>
+  </head>
+  <body style='text-align:center; background: lightblue;'>
+    <h1 style='font-family:Verdana, Geneva, Tahoma, sans-serif'>Who's that Pokémon?</h1>
+    <div id='image' style='height: 200px'></div>
+    <form id='pokemon'>
+      <input id='pokemon-name' type="text" placeholder="Guess...">
+      <input type="submit" id='guess' value="Guess">
+    <div id='answer' style='visibility: hidden'>
+      <p id='ans-p'></p>
+      <input type="submit" id='new' value='Go again'>
+    </div>
+    </form>
+  </body>
+</html>
