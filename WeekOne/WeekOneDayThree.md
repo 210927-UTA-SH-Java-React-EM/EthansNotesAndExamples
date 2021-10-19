@@ -294,7 +294,7 @@ Inside of the parenthesis of the catch block, you should declare the exception t
 The finally block will run regardless of the out of the try block
 
 try/catch rules and multi-catch blocks
-- Multiple catches are aloud, but they must go from most specific to least specific
+- Multiple catches are allowd, but they must go from most specific to least specific
 - You can catch more than one exception per catch block using ||
 - The finally is optional
 - A try/finally block is legal, but a try block on its own is not
