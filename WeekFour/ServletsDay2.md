@@ -23,3 +23,8 @@ The .sendRedirect(url) method on the HttpServletResponse object, allows you to r
 
 Opposed to the forward method on the Request Dispatcher which directs the client to a different resource inside of the server
 
+# Hands With Servlets
+1. Create a Register Servlet
+    - The app should display the Register page when a get request to /register
+2. Create a Register html page with a form to register a user with the user model
+3. After creating a user, you should be redirected to the login page
