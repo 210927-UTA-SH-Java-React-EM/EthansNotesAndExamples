@@ -1,0 +1,31 @@
+body {
+    margin-top: 100px;
+    background-color:#c6dea6;
+    margin: 100px;
+    vertical-align:middle;
+}
+
+
+
+
+img {
+    height: '60px';
+    width: '60px';
+    border-radius: 100%;
+    object-fit: cover;
+    position: relative;
+    top: 12%;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 2;
+    border: 2px solid black;
+}  
+
+.flex-child:first-child {
+    margin-right: 40px;
+} 
