@@ -92,3 +92,107 @@ Before the servlet container invokes the servlet to handle the exception, it set
 - javax.servlet.error.exception_type
 - javax.servlet.error.message
 
+# Introduction to REST
+
+## REST: Representational State Transfer
+
+It was originally designed by Roy Fielding in 2000 in his dissertion stating:
+
+- Rest is an architectural style that outline communication between a client and a server over the web
+
+To be RESTful you must adhere to these six constraints
+
+1. Uniform interface: your URL's to resources should be uniform and self descriptive
+2. Client-Server architecture
+3. Stateless: the server should hold no information about the state of the session
+4. Cacheable
+5. Layered System
+6. Code on Demand (optional)
+
+# Session Management in Servlets
+
+The HTTP protocol is stateless, meaning that it does not store any client information on the server
+
+We can create what we call sessions, and send the session information in every request the client makes
+
+Session tracking is a mechanism a servlet can use to maintain state about a series of requests, there are several ways to create a session:
+
+- HttpSession API
+- URL Rewriting
+- Hidden Form Fields
+- Cookies
+
+## HttpSession API
+
+The servlet API provides HTTPSession interface which provides a way to identify a user and to store information about that user
+
+The servlet can generate a unique session ID and give it back to the client, who will send that ID with each request going forward
+
+To create session, you simply use the HttpServletReqest objects .getSession() method, and if one does not exist it will create one
+
+Other important methods to know include:
+
+-   **setAttribute(key,object)** - used to bind an object to the session, using the key specified.
+-   **getAttribute(String)** - used to retrieve a specific saved object from the session object, using its key.
+-   **removeAttribute(key)** - used to remove the object bound with the specified key from the session.
+-   **invalidate()** - destroys the session.
+-   **getId()** - returns the unique ID assigned to the session.
+-   **getCreationTime()**- returns the time when the session was created
+-   **getLastAccessedTime()** - returns the last time the client sent a request associated with the session
+-   **getMaxInactiveInterval()** - returns the maximum time interval, in seconds.
+-   **setMaxInactiveInterval(int interval)** - Specifies the time, in seconds,after servlet container will invalidate the session.
+
+## URL Rewriting
+
+URL rewriting is a process by which a unique ID gets appended to each request URL, so the server can identify the user session
+
+URL rewriting maintains the session and works even when the users browser does not support cookies
+
+## Hidden Form Fields
+
+Hidden fields can be inserted into webpages by servlet for session tracking
+
+The fields are not visible directly, but can still be seen in the inspect window, so they should not be used for security
+
+You can use these to send session data through form data, and the user will never see it
+
+## Cookies
+
+Cookies are key-value pairs of information sent by the server to the client, which the client stores
+
+- then you send the cookie in the HTTP request header
+
+The servlet can the check for the presence of the cookie, most likely to get session information
+
+There are two types of cookies:
+- Non-persistent: a cookie that expires when the user closes the browser
+- Persistent: a cookie that only expires if the user logs out of the website, it is stored even after the browser is closed
+
+# MVC Design Pattern
+Model View Controller Design Pattern, it is a pattern that is used to design user interfaces and structure applications
+
+Model: used to represent the business later of the application, aka the data layer which defines the business logic of the system, and represents the state of the application
+
+View: the presentation layer/ui of the application. It displays data that is fetched from the model layer by the controller
+
+Controller: the link between the view and the model, it receives user requests from the view, talks to the model layer, and returns data to display on the view.
+
+The advantage of breaking up our application like this, is that multiple developers can be working on each independently of each other
+
+It also enables logical grouping of related actions on a controller together
+
+# Front Controller Design Pattern
+
+a design pattern that provides a single handler for all incoming requests for a resource in an application, then dispatches the requests to the appropriate secondary handler for that type of request
+
+It uses a helper API to achieve the dispatching mechanism, it is broken up into four components:
+
+Front Controller: is the single point of entry for the requests, it directs requests to the dispatcher
+
+Dispatcher: reponsible for managing the actions and the views, including locating and routing to specific actions that will service a request, and finding the correct view
+
+Helper Classes: are used to break up the logic of specific features, and makes the program easier to build and maintane
+
+Views: represent and display information that we want to display to the client
+
+![front-controller](./frontctrller.gif)
