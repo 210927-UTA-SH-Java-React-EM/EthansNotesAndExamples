@@ -19,4 +19,22 @@
   	<url-pattern>/text</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>SimpleHTMLServlet</servlet-name>
+  	<servlet-class>com.example.htmlserv.HtmlServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SimpleHTMLServlet</servlet-name>
+  	<url-pattern>/html</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>UserServlet</servlet-name>
+  	<servlet-class>com.example.userserv.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserServlet</servlet-name>
+  	<url-pattern>/user</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
