@@ -39,3 +39,58 @@ To create a node project use `npm init`
 - `npm i packagename`
 - `npn install -g packagename` will install a package globally
 - `npm install -D packagename` will install a package as a dev dependency
+
+# Typescript:
+an open source, object-oriented, typed super set of Javascript, created by Microsoft
+- It contain all functionality of Javascript
+- With additions of classes, interfaces, inheritance, modules, and more
+- It is portable across browsers and devices
+- It supports strong/static typing
+
+Typescript is not directly runnable by the browser, you must transpile it into javascript before running it in a browser or node
+
+Install typescript with `npm i -g typescript`
+
+To compile typscript into JS, you use the `tsc` command which will output a javascript file with the same name as the ts file
+
+# Babel:
+a tool/library used with Javascript to convert between different versions of Ecmascript versions
+- typically used to convery newer versions of Javascript into browser compatible versions of Javascript
+
+# Variable Data Types
+
+Like Javascript you still declare variables with let, var, and const, however now you must declare a type:
+- ex. `let varname : [type] = value`
+
+There are 11 datatypes in Typescript:
+- Boolean: true or false
+- Number: integer or decimal
+- String: text inclosed by single or double quotes
+- Undefined: same as JS
+- Null: same as JS
+- Any: acts as a normal JS variable
+- Void: used for functions that do not return anything
+- Arrays: dynamic sized like JS, store a single datatype
+- Tuples: an array that can store a fixed number of objects
+- Enum: declare a set of named constants
+- Never: represents a type of value that never occur
+
+# Classes and Access Modifiers
+
+In typscript the `class` keyword is used to declare a class, and the `new` keyword is used to create a new instance of a class
+
+You can implement inheritance with typescript using classes using the extends keyword similar to java
+
+Typescript has three access modifers:
+- public: the default modifer, can accessed anywhere
+- private: can only be accessed inside of the class
+- protected: can only be accessed inside of the class and children classes
+
+We can also make properties read only with the readonly modifer
+
+In Typescript, the code we write is globally scoped by default. To restrict this Typescript provides modules and namespaces. All variables, classes, and functions declared in a module are not accessible outside of the module
+
+You create a module using the export keyword, and you can use other modules by using the import keyword
+
+Typescript supports getters and setters to access and set class members, you simply use the set and get keyword to create these mutators. You can use these as properties rather than methods
+
