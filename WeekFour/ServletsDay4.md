@@ -94,3 +94,39 @@ You create a module using the export keyword, and you can use other modules by u
 
 Typescript supports getters and setters to access and set class members, you simply use the set and get keyword to create these mutators. You can use these as properties rather than methods
 
+# Interfaces
+
+Interfaces allow us to create contracts that other classes/objects can implement
+
+You define an interface with the interface keyword, which includes the properties you want the class/object to have
+
+You can indlude optional properties with the ?
+
+The typscript compiler does not convert the interface, it is only used for type checking
+
+# OOP Concepts in Typescript
+
+Inheritance: achieved through implementing interfaces, and extending classes, since TS is a superset of Javascript, it can also still be done through proto
+
+Abstraction: achieved through interfaces and abstract classes
+
+Encapsulation: achieved through access modifers provided typescript
+
+Polymorphism: achieved through overriding methods of child classes
+
+# Decorators
+A decorator is a special kind of declaration attached to a class, method, accessor, property, or parameter. They look like annotations in Java
+
+In typescript we have to enable experimental support for decorators in tsconfig.ts file
+
+## Types
+
+Class is declared before a class delclaration and is apllied to the constructor of the class, and is used to observe, modify, or replace a class definition
+
+Method is declared beforea method declaration and is applied to the Property Descriptor for the method, they are used to observe, modify, or replace a method definition
+
+Property are used to listen to state changes on a class
+
+Parameter is declared before a parameter declaration and is applied to the function for a class construstor or method declaration
+
+Accessor is applied to the property descriptor for the accessor
