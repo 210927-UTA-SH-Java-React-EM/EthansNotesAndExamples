@@ -68,3 +68,31 @@ componentDidMount is primarily used for grabbing/fetching data after the page lo
 
 componentWillUnmount is primarily used for cleanup
 
+# Functional Components
+
+React allows you to create components based off of functions
+- These are simplier, and more straight forward to write
+- With the inclusion of Hooks, functional components are now (almost) powerful as the more bulky class based components
+- As long as the function returns JSX or TSX it will be valid react component
+
+# Hooks:
+functions that allow you to "hook" into React state and lifecycle methods from function compontents
+
+## Basic Hooks: useState, useEffect, useContext
+
+useState:
+- allows you to store and mutate state inside of a function component
+- declare a state variable and a mutator inside of square brackets, then useState(defaultVal) to set the state
+- use the declared mutator to change and update the state
+- with useState, the state does not have to be an object like in classes
+
+useEffect:
+- allows you to perform some logic at specific points in the application life
+- its takes in a callback function that performs some logic
+- it can be used to watch for specific events/changes in state to perform some logic
+
+useContext:
+- used to access values being used with the ContextAPI
+- Context is a way to store application state
+
+# React Hands On: With any type of component and CSS, create a user profile page
