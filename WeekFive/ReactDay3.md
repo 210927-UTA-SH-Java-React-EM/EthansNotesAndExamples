@@ -16,3 +16,4 @@ However, React expects you to provide a unique key for each element that you are
 
 The only time you should use an index as a key is when you have no other options
 
+# Hands on Number 1, create a stop watch using event handlers and the setInterval function from javascript
