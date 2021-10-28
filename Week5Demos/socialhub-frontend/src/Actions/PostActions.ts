@@ -3,12 +3,35 @@ import {GET_POSTS, ADD_POST} from './ActionTypes';
 import axios from 'axios';
 
 interface NewPost{
-    userId: number,
-    content: string
+    userId: any,
+    username: any,
+    content: any
 };
 
 export const addPost = (post:NewPost) => async (dispatch:any) => {
-    //New post logic here
+
+    console.log("in the post actions add post");
+    console.log(post);
+
+    try{
+        let newPost = {
+            userId: post.userId,
+            content: post.content
+        }
+
+        let res = await axios.post('http://localhost:8080/SocialHubWeekFour/api/posts', newPost);
+        return dispatch({
+            type: ADD_POST,
+            payload: {
+                postId: 0,
+                username: post.username,
+                content: post.content
+            }
+        });
+    }
+    catch (e){
+        console.log(e);
+    }
 }
 
 export const getPosts = () => async (dispatch:any) => {

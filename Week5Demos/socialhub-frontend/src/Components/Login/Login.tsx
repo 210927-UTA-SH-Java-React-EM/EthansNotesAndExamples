@@ -51,12 +51,12 @@ export const Login:React.FC<any> = () => {
                 <div className="input-div">
                     <h4 className="login-h4">Enter Username</h4>
                     <input className="login-input" autoComplete="off" type="text" name="username"
-                        placeholder="Username" onChange={handleChange} />
+                        placeholder="Username" onChange={handleChange} id="username"/>
                 </div>
                 <div className="input-div">
                     <h4 className="login-h4">Enter Password</h4>
                     <input className="login-input" type="password" name="password"
-                        placeholder="Password" onChange={handleChange} />
+                        placeholder="Password" onChange={handleChange} id="password"/>
                 </div>
             </form>
             <button className="login-button" onClick={login}>Login</button>
