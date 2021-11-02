@@ -36,6 +36,13 @@ public class UserDaoHibernate implements UserDao{
 		return user;
 		
 	}
+	
+	public User getUserById(int id) {
+		Session ses = HibernateUtil.getSession();
+		
+		User u = ses.createQuery("from User where userId=:id", User.class).setInteger("userId", id).uniqueResult();
+		return u;
+	}
 
 	@Override
 	public void createUser(User u) throws SQLException {

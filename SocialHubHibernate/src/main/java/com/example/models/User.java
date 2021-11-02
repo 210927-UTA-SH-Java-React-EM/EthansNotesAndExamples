@@ -12,10 +12,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+//Named Queries/Named Native Queries
+@NamedQueries({
+		@NamedQuery(name="getUserLikedPosts", query="select u.likePosts from User u where u.id =:id")
+})
 
 //We need to mark our POJO/Bean as a persistence object
 @Entity
@@ -137,9 +144,17 @@ public class User {
 		this.posts = posts;
 	}
 
+	public Set<Post> getLikePosts() {
+		return likePosts;
+	}
+
+	public void setLikePosts(Set<Post> likePosts) {
+		this.likePosts = likePosts;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", username=" + username + ", password=" + password + ", posts=" + posts + "]";
+				+ ", username=" + username + ", password=" + password + ", posts=" + posts + ", likedPosts=" + likePosts + "]";
 	}
 }

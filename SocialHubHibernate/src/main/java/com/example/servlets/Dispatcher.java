@@ -15,13 +15,13 @@ public class Dispatcher {
 	public static void process(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException {
 		System.out.println("In the Servlet Dispatcher with URI: " + req.getRequestURI());
 		switch(req.getRequestURI()) {
-			case "/SocialHubWeekFour/api/login":
+			case "/SocialHubHibernate/api/login":
 				LoginController.login(req, res);
 				break;
-			case "/SocialHubWeekFour/api/posts":
+			case "/SocialHubHibernate/api/posts":
 				PostController.handlePosts(req, res);
 				break;
-			case "/SocialHubWeekFour/api/session":
+			case "/SocialHubHibernate/api/session":
 				SessionController.getSession(req, res);
 		}
 	}

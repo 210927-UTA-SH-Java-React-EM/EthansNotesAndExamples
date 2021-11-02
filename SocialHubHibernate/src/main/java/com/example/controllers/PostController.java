@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.example.dao.PostDao;
 import com.example.dao.PostDaoDB;
+import com.example.dao.PostDaoHibernate;
 import com.example.dao.UserDao;
 import com.example.dao.UserDaoDB;
+import com.example.dao.UserDaoHibernate;
 import com.example.models.PostDisplay;
+import com.example.models.User;
 import com.example.services.PostService;
 import com.example.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -21,13 +24,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class PostController {
 	
-	private static PostDao pDao = new PostDaoDB();
-	private static PostService pServ = new PostService(pDao);
-	private static UserDao uDao = new UserDaoDB();
+	private static PostDaoHibernate pDao = new PostDaoHibernate();
+	private static UserDaoHibernate uDao = new UserDaoHibernate();
+	private static PostService pServ = new PostService(pDao, uDao);
 	private static UserService uServ = new UserService(uDao);
 	
 	public static void handlePosts(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
-		/*
 		if(req.getMethod().equals("GET")) {
 			List<PostDisplay> posts = pServ.getAllPosts();
 			res.getWriter().write(new ObjectMapper().writeValueAsString(posts));
@@ -51,15 +53,15 @@ public class PostController {
 			int wallId = userId;
 			String content = parsedObj.get("content").asText();
 			
-			pServ.addPost(userId, wallId, content);
+			User u = uDao.getUserById(userId);
+			
+			pServ.addPost(u, content);
 			
 			ObjectNode ret = mapper.createObjectNode();
 			ret.put("message", "successfully submitted a new post");
 			
 			res.getWriter().write(new ObjectMapper().writeValueAsString(ret));
 		}
-		*/
-		
 	}
 	
 }

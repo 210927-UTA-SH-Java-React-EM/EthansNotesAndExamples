@@ -14,7 +14,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
+/*
+@NamedNativeQuery(name="getUsersThatLiked", query="select p.users from Post p where p.post_id = :id")
+*/
 
 @Entity
 @Table(name="posts")
@@ -86,9 +93,17 @@ public class Post {
 		this.postContent = postContent;
 	}
 
+	public Set<User> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(Set<User> likes) {
+		this.likes = likes;
+	}
+
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + "user= " + user.getUsername() + ", postContent="
-				+ postContent + "]";
+		return "Post [postId= " + postId + " user= " + user.getUsername() + ", postContent="
+				+ postContent + "likes=" + likes.size() + "]";
 	}
 }
