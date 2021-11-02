@@ -162,3 +162,138 @@ Service Factory: it provides lifecycle management for the service, which helps t
 
 Service: the implentation of the service which will process the request
 
+# Intro To Spring
+
+Spring is a family of frameworks which can be used to rapidly create loosley coupled Java Applications
+
+It is an inversion of control container that provides flexible infrustructure to create Java Applications
+
+Its main inversion of control is called dependency injection
+
+Spring enables developers to build java applications utilizing POJO's and applying enterprise services to those POJO's as needed. This allows developers to focus on business logic, while Spring manages infrastructure needs
+
+## Spring Modules
+
+The modules you need to know about from spring are:
+
+- Core
+- Web
+- ORM
+- MVC
+- AOP
+- Security
+
+## Spring Core
+
+Core contains the most basic framework for the IOC container and dependency injection. This includes:
+
+- Core and Beans: provide the fundamental framework for springs IOC controller, icluding the dependency injection features
+    - Beans feature the BeanFactory which is an implementation of the factory pattern, to create beans used in dependency injection
+- Context: provides the ApplicationContext which represents the Spring IOC container, and is used to instaniate, configure, and assemble beans
+
+Beans are classes that we want Spring to manage for us
+
+# Spring IOC Container and Dependency Injection
+
+Inversion of COntrol is a design pattern in which control over certain parts of object-oriented design is inverted to achieve loose coupling
+
+We essentially giving control to some other part of the application
+
+The IOC controller is responsible for instantiating, configuring, and assemblying our beans
+
+It gathers information from an XML file called beans.xml
+
+## Bean Factory vs Application Context
+
+There are two types of IOC containers in Spring
+
+- BeanFactory is the simpliest
+- ApplicationContext is an extended version of BeanFactory with more features
+    - integration with spring aop
+    - event propagation
+    - message resource handling
+    - application layer specific context
+
+Dependency injection removes dependencies from a program by providing the configuration in an external file
+
+This loosely couple your code, making it easier to test, and implement in a wider variety of environments
+
+Two official ways to achieve dependency injection in Spring:
+- Constructor Injection: the dependencies are injected into the constructor
+    - Generally known as more secure, enables implementation of immutable objects
+- Setter Injection: the dependencies of the class are injected through a setter after the no-args constructor is called
+    - Allows for partial dependencies, more flexible than constructor, can be used to resolve circular dependencies
+
+# Bean Lifecycle
+
+Beans are managed by the BeanFactory or the ApplicationContext, and have a lifecycle, here is a high level overview:
+
+1. Beans are first instantiated
+2. Their properties are set
+3. Any associated interfaces or objects are made aware of their existence
+4. The bean is made aware of any assocaited interfaces as well
+5. Any other methods, particularly custom methods are invoked
+6. Then the bean is ready for use
+7. Once the bean is no longer used, it is marked for removal and a destroy method is invoked for the bean
+8. Custom destroy methods are invoked, if any
+9. Bean is destroyed
+
+# Scopes of a bean
+
+In the case of bans, scope can be seen as a sub-section of a larger application, with certain defined values, properties and objects
+
+There are six scopes that you can apply to a bean:
+
+Singleton: default, there is a single instance of the bean per IOC container
+
+Prototype: a single bean definition is scoped to a number of object instances
+
+Request: a single bean definition is scoped to the lifecycle of a HTTP request
+
+Session: a single bean defintion is scoped to a HTTP session
+
+Global Session: a single bean definition is scoped to a global HTTP session
+
+Application: a single bean definition is scoped to a ServletContext
+
+# XML vs Annotation-based Configuration
+
+Our IOC container needs someway to know how to inject dependencies for us
+
+We have two ways to achieve configuration
+- XML files
+- Annations in Java classes
+
+# Annotations
+
+-   `@Autowired` - Spring Annotation used to inject bean dependencies as needed, based on bean type.
+-   `@Bean` - Spring annotation which plays the same role as the <bean/> element in an XML-based configuration, and you can specify an identifier for these beans with the use of the id (or name) property.
+-   `@Component` - Generic [stereotype annotation](./stereotypes.md) used to declare an object as a bean.
+-   `@ComponentScan` - Spring Annotation which specifies path locations for defined beans to be used for potential injection.
+-   `@Configuration` - Spring annotation indicates a class file used to manage bean configurations using Java configuration similar to the Application Context file for an XML or annotation based configuration.
+-   `@Inject` - Standard Java annotation used to inject bean dependencies as needed. Equivalent to Spring's `@Autowired` annotation.
+-   `@Named` - Standard Java annotation for disambiguating beans based on bean name. Equivalent to Spring's `@Qualifier` annotation. Additionally can be used as an equivalent to Spring's `@Component` annotation to define beans as well.
+-   `@Qualifier` - Spring Annotation which can be used in conjunction with `@Autowired` to disambiguate multiple beans of a defined type.
+-   `@Required` - Standard Java annotation which indicates that an affected bean property must be populated at configuration time through an explicit property value in the bean's definition.
+-   `@Resource` - Standard Java Annotation used to inject bean dependencies based on bean name, rather than type.
+
+# Autowiring types
+
+
+"no" autowiring means spring will not autowire, this is default
+		
+"byType" means spring will autowire by looking at the class' property datatypes and matching them to beans in the IOC container. It uses setters to inject the beans
+		
+"constructor" works similar to byType, except it uses a constructor with the most distinct dependencies, it then mathces by type to beans in the IOC container
+
+"byName" looks at the class' property variable names and finds beans in the container with the same names, it uses setters inject
+
+# Stereotypes
+
+@Component: is the most generic stereotype used to declare an object as a bean
+
+@Repository: is used to mark a class as being used to store data or access data
+
+@Service: is used to mark a class as being used as a service
+
+@Controller: is used to mark a class as a Spring MVC controller which allows the use of handler mapping annotations

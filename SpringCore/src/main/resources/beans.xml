@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		
+	<!-- SETTER INJECTION -->
+	<!--
+	<bean name="VillainDaoBean" scope="singleton" class="com.example.dao.SuperVillainDao"/>
+	<bean name="villServ" class="com.example.services.VillainService">
+		<property name="sDao" ref="VillainDaoBean"/>
+	</bean>
+	-->
+	
+	<!-- CONSTRUCTOR INJECTION -->
+	<!--
+	<bean name="VillainDaoBean" scope="singleton" class="com.example.dao.SuperVillainDao"/>
+	<bean name="villServ" class="com.example.services.VillainService">
+		<constructor-arg index="0" ref="VillainDaoBean"/>
+		<constructor-arg index="1" value="5"/>
+	</bean>
+	-->
+	
+	<!-- AUTOWIRING
+		"no" autowiring means spring will not autowire, this is default
+		"byType" means spring will autowire by looking at the class' property datatypes and matching them to beans
+		in the IOC container. It uses setters to inject the beans
+		"constructor" works similar to byType, except it uses a constructor with the most distinct dependencies, it then mathces by type to beans
+		in the IOC container
+		"byName" looks at the class' property variable names and finds beans in the container with the same names, it uses setters inject 
+	 -->
+	
+	<!-- This tells our application context, aka our spring container to use autowiring -->
+	
+	<context:annotation-config />
+	
+	<!--
+	<bean name="villainDao" class="com.example.dao.SuperVillainDao"/>
+	<bean name="villServ" class="com.example.services.VillainService"/>
+	-->
+	
+	<!-- We can take this further, and make Spring look for classes we want to turn into beans -->
+	<context:component-scan base-package="com.example"/>
+	
+</beans>
