@@ -106,3 +106,59 @@ To declare them in the entity class you can use these annotations:
 `@NamedQuery` has two attributes:
 - name: used to specify a name by which a session object can locate the query
 - query: used to specify the HQL statement
+
+# Caching
+
+Hibernate performs caching to optimize the performance of an application
+
+There are two levels of caching in hibernate L1 and L2
+
+First Level/L1:
+- The first place hibernate looks for data
+- This automatically implemented hibernate
+- Associated with the Session Object, and cannot be accessed by other sessions
+- Only useful with repeated queries on the same session
+- We query data, hibernate puts that data into the cache, and if we sent the same query we don;t have to hit the database
+
+Second Level/L2:
+
+- If data is not in L1, then hibernate will look in L2
+- This one is optional, that must be implemented through a third party
+    - L2 can be implemented with a technology that supports out of the box integration with Hibernate
+- The cache is associated with the SessionFactory, all sessions have access to it
+- If the data is not in the L1 cache, and not in the L2 cache, the database will be hit
+
+To enable L2 cache we have to first configure in the hibernate config file
+- `<property name="cache.use_second_level_cache">true</property`
+- `<property name="hibernate.cache.region.factory_class">pathforcacheclass</property>`
+
+We also must annotate the entity class with @Cache, and provide the cache concurency strategy:
+
+- READ_ONLY: use this strategy only for entities where we nevr change any data and use data as a reference
+
+- NONSTRICT_READ_WRITE: doesn't guarentee the consistency between the cache and the database, use this only for entities where we change data rarely
+
+- READ_WRITE: use this for entities where we read and update data
+
+- TRANSACTIONAL: use this strategy to cache the full transactions made on the entity
+
+It is also recomended to annotate the Entity class with @Cacheble
+
+# Service Locator Design Pattern
+
+The service locator design pattern is used to encapsulate the processes involved in obtaining a service in a layer of abraction. It has a central registry know as the Service locator which is responisble for returning instances of service objects based on requests from clients
+
+![servicelocator](service-locator.png)
+
+Design components:
+
+Client: responsible for invoking services via the ServiceLocator
+
+Service Locator: is a single point of contact for returning services to the client from the cache. It abstracts the lookup and/or creation of services
+
+Initial Context: this creates, registers, and caches services. It is the starting point of the lookup and creation process
+
+Service Factory: it provides lifecycle management for the service, which helps to create, register, lookup, or remove services from the cache
+
+Service: the implentation of the service which will process the request
+
