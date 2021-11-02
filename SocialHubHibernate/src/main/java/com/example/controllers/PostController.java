@@ -27,7 +27,7 @@ public class PostController {
 	private static UserService uServ = new UserService(uDao);
 	
 	public static void handlePosts(HttpServletRequest req, HttpServletResponse res) throws JsonProcessingException, IOException{
-		
+		/*
 		if(req.getMethod().equals("GET")) {
 			List<PostDisplay> posts = pServ.getAllPosts();
 			res.getWriter().write(new ObjectMapper().writeValueAsString(posts));
@@ -58,6 +58,7 @@ public class PostController {
 			
 			res.getWriter().write(new ObjectMapper().writeValueAsString(ret));
 		}
+		*/
 		
 	}
 	

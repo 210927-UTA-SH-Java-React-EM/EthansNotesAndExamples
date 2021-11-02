@@ -15,10 +15,12 @@ public class PostService {
 		this.pDao = pdao;
 	}
 	
+	/*
 	public void addPost(int userId, int wallId, String content) {
 		Post p = new Post(userId, wallId, content);
 		pDao.createPost(p);
 	}
+	*/
 	
 	public List<PostDisplay> getAllPosts(){
 		return pDao.getAllPosts();

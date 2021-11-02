@@ -21,7 +21,7 @@ public class PostDaoDB implements PostDao{
 	
 	@Override
 	public void createPost(Post p) {
-		
+		/*
 		try {
 			Connection con = conUtil.getConnection();
 			
@@ -42,7 +42,7 @@ public class PostDaoDB implements PostDao{
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 	}
 
 	@Override
@@ -84,7 +84,7 @@ public class PostDaoDB implements PostDao{
 
 	@Override
 	public User getUserPosts(User u) {
-		
+		/*
 		List<Post> posts = new ArrayList<Post>();
 		
 		try {
@@ -118,7 +118,7 @@ public class PostDaoDB implements PostDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		return null;
 	}
 }

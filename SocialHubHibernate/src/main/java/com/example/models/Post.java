@@ -22,7 +22,7 @@ public class Post {
 	
 	@Id
 	@Column(name="post_id")
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int postId;
 	
 	//Instead of storing an author ID, we can just store the entire user, and hibernate will make the relationship for us

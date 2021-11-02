@@ -8,8 +8,9 @@
 		<!-- This is the connection information -->
 		<property name="hibernate.connection.username">socialuser</property>
 		<property name="hibernate.connection.password">password</property>
-		<property name="hibernate.connection.url">jdbc://postgresql://javareact210927.cjryxnsvzgov.us-east-2.rds.amazonaws.com:5432/socialhibernatedb</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://javareact210927.cjryxnsvzgov.us-east-2.rds.amazonaws.com:5432/socialhibernatedb</property>
 		<property name="hibernate.connection.driver.class">org.postgresql.Driver</property>
+		<property name="hibernate.connection.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
 		
@@ -24,9 +25,11 @@
 			Validate which checks to make sure that the schema exists as expected
 			Update, will not alter the schema, it will add to the schema if you need more objects
 			None hibernate will do nothing to your schema -->
-		<property name="hiberante.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">create</property>
 		
 		<!-- We will map our classes below -->
+		<mapping class="com.example.models.User"/>
+		<mapping class="com.example.models.Post"/>
 		
 	</session-factory>
 
