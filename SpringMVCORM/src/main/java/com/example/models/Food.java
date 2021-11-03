@@ -1,11 +1,25 @@
 package com.example.models;
 
-public class Food {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="food")
+public class Food {
+	
+	@Id
+	@Column(name="food_id")
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int foodId;
 	
+	@Column(name="food_name", unique=true, nullable=false)
 	private String foodName;
 	
+	@Column(name="calories", nullable=false)
 	private double calories;
 
 	public Food(int foodId, String foodName, double calories) {
