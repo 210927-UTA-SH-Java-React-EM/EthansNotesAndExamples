@@ -80,3 +80,79 @@ Execution is the most widely used, and you can use patterns with wildcard to spe
 ```java
 execution(?modifiers-pattern ret-type-patter ?declaring-type-pattern name-pattern(param-pattern) ?throws pattern)
 ```
+
+# Spring Boot
+
+Spring Boot is an open source Spring Framework project used to rapidly create Java based production grade applications utilizing Spring framewoeks IOC and module integrations
+
+Spring Boot simplifies project creation because it allows you to pick and choose which Spring frameworks you want to use, and configures them for you
+
+Spring Boot has a built in Tomcat server, and you dont need to map any servlets for web applications
+
+To enable auto configuration you just need to annotate your driver class with @SpringBootApplication
+
+@SpringBootApplication is a combination of:
+- @SpringBootConfiguration
+- @EnabledAutoConfiguration
+- @ComponentScan
+
+You can also override/customize configurations using the application.properties file
+
+# Spring Data
+### Spring data is not a core spring framework
+
+Spring Data is a family of frameworks for ORM and data perstistence whos main purpose is to abstract away required logic for data storage. Allows us to focus on business logic
+
+We are specifically using Spring Data JPA
+
+It essentially abstracts away the use of hibernate and Spring ORM, simplifying you Data Access Layer and providing standard implementations for common DAO methods
+
+We no longer have to implement our DAO methods, they are simply provided for you by extending the JpaRepositry
+
+When you extend the JpaRepository Spring will automatically create an implementation of your DAO, include CRUD for standard data access, as well as custom queries based off of method signatures
+
+## Spring Data JPA Interface Hierarchy
+
+![JPA Repository](springdatajrepositories.png)
+
+## Spring Data JPA Features
+
+- Building sophisticated repositories based on Spring and JPA
+- Support for QueryDSL predicates and type safe JPA queries
+    - This is less important/probably wont use it. But, QueryDSL us a framework which enables statically typed SQL-like queries, instead of requiring inline queries XML
+- Transparent auditing of domain classes
+- Pagination support
+- Dynamic Query Execution
+- Support for integration of custom data access code
+- Automatic Custom Queries
+- Validation of @Query annotated queries during bootstrapping
+- Support for XML based entity mapping
+- JavaConfig based repository configuration by introducing `@EnableJpaRepository`
+
+## Spring Data JPA Methods
+
+Comes with predefined Methods
+- https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html
+- Primarily CRUD operations
+
+You can create custom method signature to find almost anything you want/need:
+- https://docs.spring.io/spring-data/jpa/docs/1.5.0.RELEASE/reference/html/jpa.repositories.html
+- Take a look at table 2.3 in the above link for examples
+- When Spring data create a new repository imnplemenation, it analyzes all of the methods in the interface, and attempts to automatically generate queries from the method names. It has its limitations but it is also very powerful and an elegant way of defining new custom access methods with very little effort
+
+You can also use the @Query to write JPA queries and use QueryDSL like stated above
+- You may end up using @Query, but its typically rare
+
+## Spring Data Annotations
+
+A quick run down of the different Spring Data Annotations
+
+| Annotation                      | Purpose                                                                                   |
+| ------------------------------- | ----------------------------------------------------------------------------------------- |
+| @Transactional                  | Configure how the database transaction behaves               |
+| @NoRepositoryBean               | Creates an interface that provides common methods for child repositories                  |
+| @Param                          | Parameters can be passed to queries defined with @Query                                   |
+| @Transient                      | Mark a field as transient, to be ignored by the data store engine during reads and writes |
+| @CreatedBy, @LastModifiedBy     | Auditing annotations that will automatically be filled with the current principal         |
+| @CreatedDate, @LastModifiedDate | Auditing annotations that will automatically fill with current date                       |
+| @Query                          | Supply a JPQL query for repository methods                                                |
