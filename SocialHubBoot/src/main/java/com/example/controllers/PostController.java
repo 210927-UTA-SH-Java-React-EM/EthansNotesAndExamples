@@ -37,4 +37,11 @@ public class PostController {
 		return new ResponseEntity<Post>(pServ.createPost(p), HttpStatus.CREATED);
 	}
 	
+	@PostMapping("/like")
+	public ResponseEntity<Post> likePost(@RequestBody LinkedHashMap<String, Integer> post){
+		User u = uServ.getUserById(post.get("userId"));
+		pServ.likePost(post.get("postId"), u);
+		return new ResponseEntity<Post>(pServ.getPostById(post.get("postId")), HttpStatus.OK);
+	}
+	
 }
