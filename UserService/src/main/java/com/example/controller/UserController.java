@@ -3,6 +3,7 @@ package com.example.controller;
 import java.util.LinkedHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 @RestController()
-@RequestMapping("user")
 @AllArgsConstructor
 @NoArgsConstructor
 @CrossOrigin(origins="*")
@@ -32,6 +32,7 @@ public class UserController {
 	private UserService uServ;
 	
 	@Bean
+	@LoadBalanced
 	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
@@ -65,7 +66,7 @@ public class UserController {
 	//We no longer have direct access to posts, so we must talk to the other micro service with RestTemplate
 	@GetMapping("/posts/{id}")
 	public ResponseEntity<String> getUserPosts(@PathVariable("id")int id){
-		String url = "http://localhost:8090/post/" + id;
+		String url = "http://post/" + id;
 		ResponseEntity<String> res = this.rest.getForEntity(url, String.class);
 		return res;
 	}
