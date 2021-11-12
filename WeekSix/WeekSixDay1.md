@@ -68,7 +68,7 @@ Persistent Objects are instances of POJO classes, that each represent a row in a
 
 ## Interfaces of Hibernate
 
-Configurable (Class): represents a configuration or properties file for hibernate. Created once during application initialization.
+Configuration (Class): represents a configuration or properties file for hibernate. Created once during application initialization.
 - It is used to create the SessionFactory
 - The configure() method load mapping and properties from the hibernate.cfg.xml
 - addAnnotatedClass() method is used to specify an entity class
