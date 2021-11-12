@@ -1,0 +1,33 @@
+
+.hobbies-container {
+    width: 1000px;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid #dedede;
+}
+
+.hobbies-image {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.hobbies-profile{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.hobbies-username{
+    margin-left: 15px;
+}
+
+.hobbies-content{
+    margin-left: 75px;
+    margin-right: 75px;
+    margin-top: 10px;
+}
